@@ -1,0 +1,24 @@
+[project]
+name = "cv"
+version = "0.0.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "RenChu Wang", email = "patrick1031wang@gmail.com"},
+]
+dependencies = ["typer>=0.21.1", "omegaconf>=2.3.0"]
+requires-python = "==3.14.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.5.1",
+    "black>=26.1.0",
+    "isort>=7.0.0",
+    "autoflake>=2.3.1",
+    "mypy>=1.19.1",
+]

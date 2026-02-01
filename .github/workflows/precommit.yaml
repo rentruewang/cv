@@ -1,0 +1,34 @@
+name: Pre Commit Checks
+on: [push]
+jobs:
+  format:
+    name: 📑 Formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔔 Check out
+        uses: actions/checkout@v3
+
+      - name: ⬇️ Python PDM
+        uses: pdm-project/setup-pdm@v4
+        with:
+          python-version: "3.13"
+          cache: true
+
+      - name: 🏃 Formatting
+        run: make -C ci format
+
+  type:
+    name: 👨‍⚕️ Type Checking
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔔 Check out
+        uses: actions/checkout@v3
+
+      - name: ⬇️ Python PDM
+        uses: pdm-project/setup-pdm@v4
+        with:
+          python-version: "3.13"
+          cache: true
+
+      - name: 🏃 Type checking
+        run: make -C ci typing
