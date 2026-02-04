@@ -1,7 +1,5 @@
 # Copyright (c) RenChu Wang - All Rights Reserved
 
-import sys
-
 import gha
 import pdm
 import sh
