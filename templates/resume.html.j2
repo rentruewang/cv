@@ -19,81 +19,11 @@
         <!-- HEADER -->
         <div class="name"> {{ name }}</div>
         <div class="subtitle"> Build: {{ build_date }} </div>
-        <div class="contact">
-            {% for c in contacts %}
-            <span>
-                <i class="{{ c.icon }}"></i>
-                <a href="{{ c.href }}" target="_blank">{{ c.label }}</a>
-            </span>
-            {% endfor %}
-
-        </div>
-        <!-- EDUCATION -->
-
-        <div class="section-title">Education</div>
-        {% for edu in educations %}
-        <div class="entry-header">
-            <div> {{ edu.degree }} | {{ edu.school }}</div>
-            <div> {{ edu.start }} - {{ edu.end }} </div>
-        </div>
-        <ul>
-            <li>
-                Courses: {{ edu.courses_str }}
-            </li>
-        </ul>
+        {% for section in sections %}
+            <!-- {{ section.title }} -->
+            {{ section.body }}
         {% endfor %}
 
-        <!-- TECHNICAL SKILLS -->
-        <div class="section-title">Technical Skills</div>
-
-        <table class="skills-table">
-            {% for skill in skills %}
-            <tr>
-                <td>{{ skill.category }}</td>
-                <td>{{ skill.items_str }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-
-        <!-- EXPERIENCE -->
-        <div class="section-title">Positions of Responsibility</div>
-
-        {% for pos in positions %}
-        <div class="entry">
-            <div class="entry-header">
-                <div>{{ pos.title }} | {{ pos.company }}</div>
-                <div>{{ pos.period }}</div>
-            </div>
-
-            {% if pos.bullets %}
-            <ul>
-                {% for bullet in pos.bullets %}
-                <li>{{ bullet }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-        </div>
-        {% endfor %}
-
-        <!-- PROJECTS -->
-        <div class="section-title">Selected Projects & Achievements</div>
-
-        {% for project in projects %}
-        <div class="entry">
-            <div class="entry-header">
-                <div>{{ project.title }}</div>
-                <div>{{ project.date }}</div>
-            </div>
-
-            {% if project.bullets %}
-            <ul>
-                {% for bullet in project.bullets %}
-                <li>{{ bullet }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-        </div>
-        {% endfor %}
 
 
     </div>

@@ -1,0 +1,9 @@
+<div class="contact">
+    {% for c in contacts %}
+    <span>
+        <i class="{{ c.icon }}"></i>
+        <a href="{{ c.href }}" target="_blank">{{ c.label }}</a>
+    </span>
+    {% endfor %}
+
+</div>

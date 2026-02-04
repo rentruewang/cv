@@ -1,0 +1,11 @@
+<!-- TECHNICAL SKILLS -->
+<div class="section-title">Technical Skills</div>
+
+<table class="skills-table">
+    {% for skill in skills %}
+    <tr>
+        <td>{{ skill.category }}</td>
+        <td>{{ skill.items_str }}</td>
+    </tr>
+    {% endfor %}
+</table>

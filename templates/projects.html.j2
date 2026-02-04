@@ -1,0 +1,19 @@
+<!-- PROJECTS -->
+<div class="section-title">Selected Projects & Achievements</div>
+
+{% for project in projects %}
+<div class="entry">
+    <div class="entry-header">
+        <div>{{ project.title }}</div>
+        <div>{{ project.date }}</div>
+    </div>
+
+    {% if project.bullets %}
+    <ul>
+        {% for bullet in project.bullets %}
+        <li>{{ bullet }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endfor %}
