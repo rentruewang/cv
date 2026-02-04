@@ -11,9 +11,9 @@ def main() -> None:
     sections = [
         contacts.contacts(),
         educations.educations(),
-        skills.skills(),
         positions.positions(),
         projects.projects(),
+        skills.skills(),
     ]
 
     out = resumes.resume(sections)
