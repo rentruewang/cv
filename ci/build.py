@@ -1,0 +1,14 @@
+# Copyright (c) RenChu Wang - All Rights Reserved
+
+import sys
+
+import gha
+import pdm
+import sh
+
+if __name__ == "__main__":
+    gha.setup()
+    pdm.install()
+
+    with sh.run_in_root():
+        sh.cmd(f"{sys.executable} -m generate")

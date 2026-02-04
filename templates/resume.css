@@ -1,0 +1,100 @@
+/* ---------- PAGE SETUP ---------- */
+@page {
+    size: letter;
+    margin: 0.5in;
+}
+
+body {
+    font-family: "Times New Roman", Times, serif;
+    color: #000;
+    background: #fff;
+}
+
+.resume {
+    max-width: 850px;
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 1.25;
+}
+
+/* ---------- HEADER ---------- */
+.name {
+    font-size: 34px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 13px;
+    margin-top: -6px;
+    margin-bottom: 6px;
+    color: gray;
+}
+
+.contact {
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.contact span {
+    margin: 0 6px;
+    white-space: nowrap;
+}
+
+/* ---------- SECTION HEADERS ---------- */
+.section-title {
+    color: #1f3cff;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 14px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 2px;
+    letter-spacing: 0.3px;
+}
+
+/* ---------- ENTRIES ---------- */
+.entry {
+    margin-top: 6px;
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.entry-sub {
+    font-style: italic;
+}
+
+ul {
+    margin-top: 4px;
+    margin-bottom: 6px;
+    padding-left: 18px;
+}
+
+li {
+    margin-bottom: 3px;
+}
+
+/* ---------- SKILLS ---------- */
+.skills-table td {
+    padding: 2px 6px 2px 0;
+    vertical-align: top;
+}
+
+.skills-table td:first-child {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* ---------- PRINT PERFECT ---------- */
+@media print {
+    a {
+        color: #000;
+        text-decoration: none;
+    }
+}
