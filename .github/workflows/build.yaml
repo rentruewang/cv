@@ -1,0 +1,45 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    name: 🏗️ Build & Upload Artifacts
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+      - name: 🔔 Check out
+        uses: actions/checkout@v4
+
+      - name: ⬇️ Set up Python + PDM
+        uses: pdm-project/setup-pdm@v4
+        with:
+          python-version: "3.13"
+
+      - name: ⚙️ Build
+        run: make -C ci build
+
+      - name: 📦 Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/
+
+  deploy:
+    needs: build
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗️ Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

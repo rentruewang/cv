@@ -5,7 +5,7 @@ description = "Default template for PDM package"
 authors = [
     {name = "RenChu Wang", email = "patrick1031wang@gmail.com"},
 ]
-dependencies = ["typer>=0.21.1", "omegaconf>=2.3.0", "jinja2>=3.1.6"]
+dependencies = ["typer>=0.21.1", "omegaconf>=2.3.0", "jinja2>=3.1.6", "rich>=14.3.2"]
 requires-python = "==3.14.*"
 readme = "README.md"
 license = {text = "MIT"}

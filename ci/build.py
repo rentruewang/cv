@@ -1,7 +1,5 @@
 # Copyright (c) RenChu Wang - All Rights Reserved
 
-import sys
-
 import gha
 import pdm
 import sh
@@ -11,4 +9,4 @@ if __name__ == "__main__":
     pdm.install()
 
     with sh.run_in_root():
-        sh.cmd(f"{sys.executable} -m generate")
+        pdm.run(f"python -m generate")
