@@ -3,7 +3,6 @@
 
 import rich
 import typer
-from jinja2 import Environment, FileSystemLoader, Template
 
 from . import contacts, educations, files, positions, projects, resumes, skills
 
