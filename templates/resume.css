@@ -98,3 +98,24 @@ li {
         text-decoration: none;
     }
 }
+
+/* Invisible in print, but still extractable and in source order */
+@media print {
+    .no-print {
+        opacity: 0;
+        font-size: 1px;
+        line-height: 1px;
+    }
+}
+
+/* Always invisible, extractable, and in-flow */
+.invisible {
+    color: #fdfdfd;
+    font-size: 1px;
+    line-height: 0.2;
+    margin: 0;
+    padding: 0;
+    display: inline;
+    white-space: nowrap;
+    float: right;
+}

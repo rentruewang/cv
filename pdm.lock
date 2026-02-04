@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = []
 lock_version = "4.5.0"
-content_hash = "sha256:cf81fe390b0c28e753b7b5105dacfafa4e8f44544963c3c5fd7879197c5550d2"
+content_hash = "sha256:c00b56fe533794438a8765ab3f00d2709b2aae1a087d921cbce56a4869f0c264"
 
 [[metadata.targets]]
 requires_python = "==3.14.*"
@@ -279,6 +279,15 @@ summary = ""
 files = [
     {file = "pathspec-1.0.4-py3-none-any.whl", hash = "sha256:fb6ae2fd4e7c921a165808a552060e722767cfa526f99ca5156ed2ce45a5c723"},
     {file = "pathspec-1.0.4.tar.gz", hash = "sha256:0210e2ae8a21a9137c0d470578cb0e595af87edaa6ebf12ff176f14a02e0e645"},
+]
+
+[[package]]
+name = "pip"
+version = "26.0"
+summary = ""
+files = [
+    {file = "pip-26.0-py3-none-any.whl", hash = "sha256:98436feffb9e31bc9339cf369fd55d3331b1580b6a6f1173bacacddcf9c34754"},
+    {file = "pip-26.0.tar.gz", hash = "sha256:3ce220a0a17915972fbf1ab451baae1521c4539e778b28127efa79b974aff0fa"},
 ]
 
 [[package]]

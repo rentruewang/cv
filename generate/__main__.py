@@ -3,7 +3,6 @@
 
 import rich
 import typer
-from jinja2 import Environment, FileSystemLoader, Template
 
 from . import contacts, educations, files, positions, projects, resumes, skills
 
@@ -12,9 +11,9 @@ def main() -> None:
     sections = [
         contacts.contacts(),
         educations.educations(),
-        skills.skills(),
         positions.positions(),
         projects.projects(),
+        skills.skills(),
     ]
 
     out = resumes.resume(sections)
