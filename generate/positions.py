@@ -3,6 +3,9 @@
 import dataclasses as dcls
 from collections.abc import Iterable
 
+from . import files
+from .resumes import Section
+
 
 @dcls.dataclass(frozen=True)
 class Position:
@@ -17,7 +20,7 @@ class Position:
         return f"{self.start} - {self.end}"
 
 
-def positions() -> Iterable[Position]:
+def _positions() -> Iterable[Position]:
     yield Position(
         title="Data Scientist",
         company="C3.ai",
@@ -53,3 +56,8 @@ def positions() -> Iterable[Position]:
             "Proposed and validated RL-based chip design models to justify solution quality.",
         ],
     )
+
+
+def positions():
+    body = files.get_template("positions").render(positions=_positions())
+    return Section(name="experience", body=body)

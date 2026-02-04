@@ -2,6 +2,9 @@
 
 import dataclasses as dcls
 
+from . import files
+from .resumes import Section
+
 
 @dcls.dataclass(frozen=True)
 class Project:
@@ -10,7 +13,7 @@ class Project:
     bullets: list[str]
 
 
-def projects():
+def _projects():
     yield Project(
         title="BoCoEL - 10x faster LLM evaluation with Bayesian optimization and NLP",
         date="Jan 2024",
@@ -39,3 +42,8 @@ def projects():
             "Supports CNN, GNN, RNN, Linear layers, and arbitrary PyTorch ops.",
         ],
     )
+
+
+def projects():
+    body = files.get_template("projects").render(projects=_projects())
+    return Section(name="projects", body=body)

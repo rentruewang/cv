@@ -2,6 +2,9 @@
 
 import dataclasses as dcls
 
+from . import files
+from .resumes import Section
+
 
 @dcls.dataclass(frozen=True)
 class Skill:
@@ -13,7 +16,7 @@ class Skill:
         return ", ".join(map(str.strip, self.items))
 
 
-def skills():
+def _skills():
     yield Skill(
         category="Programming",
         items=[
@@ -54,3 +57,8 @@ def skills():
             "Git",
         ],
     )
+
+
+def skills():
+    body = files.get_template("skills").render(skills=_skills())
+    return Section(name="skills", body=body)

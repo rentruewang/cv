@@ -1,0 +1,12 @@
+<div class="section-title">Education</div>
+{% for edu in educations %}
+<div class="entry-header">
+    <div> {{ edu.degree }} | {{ edu.school }}</div>
+    <div> {{ edu.start }} - {{ edu.end }} </div>
+</div>
+<ul>
+    <li>
+        Courses: {{ edu.courses_str }}
+    </li>
+</ul>
+{% endfor %}

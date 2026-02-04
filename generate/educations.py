@@ -2,6 +2,9 @@
 
 import dataclasses as dcls
 
+from . import files
+from .resumes import Section
+
 
 @dcls.dataclass(frozen=True)
 class Education:
@@ -16,7 +19,7 @@ class Education:
         return ", ".join(map(str.strip, self.courses))
 
 
-def educations():
+def _educations():
     yield Education(
         degree="MS CSE",
         school="Georgia Tech",
@@ -52,3 +55,8 @@ def educations():
             "Cloud Computing And Cyber Security",
         ],
     )
+
+
+def educations():
+    body = files.get_template("educations").render(educations=_educations())
+    return Section(name="educations", body=body)

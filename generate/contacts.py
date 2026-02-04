@@ -2,6 +2,11 @@
 
 import dataclasses as dcls
 
+from . import files
+from .resumes import Section
+
+__all__ = ["contacts"]
+
 
 @dcls.dataclass(frozen=True)
 class Contact:
@@ -11,7 +16,7 @@ class Contact:
     target: str | None = None
 
 
-def contacts():
+def _contacts():
     yield Contact(
         icon="fa-brands fa-github",
         label="/rentruewang",
@@ -42,3 +47,8 @@ def contacts():
         href="https://linkedin.com/in/rentruewang",
         target="_blank",
     )
+
+
+def contacts():
+    body = files.get_template("contacts").render(contacts=_contacts())
+    return Section(name="contacts", body=body)
