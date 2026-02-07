@@ -19,15 +19,7 @@
         <div class="name"> {{ name }}</div>
         <div class="subtitle"> Build: {{ build_date }} </div>
         {% for section in sections %}
-            <!-- {{ section.title }} -->
-            {{ section.body }}
-
-            {% if section.injection %}
-            <span class="invisible">
-                    {{ section.injection }}
-                </span>
-            {% endif %}
-
+            {{ section.render() }}
         {% endfor %}
     </div>
 </body>

@@ -1,0 +1,13 @@
+<!-- {{ section.title }} -->
+
+{% if section.title %}
+<div class="section-title"> {{ section.title }} </div>
+{% endif %}
+
+{{ section.body }}
+
+{% if section.injection %}
+<span class="invisible">
+    {{ section.injection }}
+</span>
+{% endif %}

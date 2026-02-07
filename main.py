@@ -2,11 +2,12 @@
 
 
 import shutil
+from typing import Any
 
 import hydra
 import rich
 
-from cv import contacts, educations, files, positions, projects, resumes, skills
+from cv import Section, files, resumes
 
 
 @hydra.main(
@@ -14,16 +15,10 @@ from cv import contacts, educations, files, positions, projects, resumes, skills
     config_name="main",
     version_base=None,
 )
-def main(cfg) -> None:
-    sections = [
-        contacts.contacts(),
-        educations.educations(),
-        positions.positions(),
-        projects.projects(),
-        skills.skills(),
-    ]
+def main(cfg: dict[str, Any]) -> None:
+    sections = cfg["sections"]
 
-    out = resumes.resume(sections)
+    out = resumes.resume(Section(sec) for sec in sections)
 
     # Write output.
     output_and_print(out)
@@ -34,7 +29,7 @@ def output_and_print(out: str) -> None:
     with (files.BUILD / "index.html").open("w+") as f:
         print(out, file=f)
 
-    shutil.copy2(files.SOURCE / "resume.css", files.BUILD)
+    shutil.copy2(files.TEMPLATE / "resume.css", files.BUILD)
 
     rich.print(out)
 

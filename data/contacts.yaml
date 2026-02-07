@@ -1,0 +1,26 @@
+name: contacts
+
+body:
+  contacts:
+    - icon: fa-brands fa-github
+      label: /rentruewang
+      href: https://github.com/rentruewang
+      target: _blank
+
+    - icon: fa-solid fa-globe
+      label: cv.rentruewang.com
+      href: https://cv.rentruewang.com
+      target: _blank
+
+    - icon: fa-solid fa-phone
+      label: "+1-669-237-2215"
+      href: tel:+16692372215
+
+    - icon: fa-solid fa-envelope
+      label: renchuwang@gmail.com
+      href: mailto:renchuwang@gmail.com
+
+    - icon: fa-brands fa-linkedin
+      label: /rentruewang
+      href: https://linkedin.com/in/rentruewang
+      target: _blank
