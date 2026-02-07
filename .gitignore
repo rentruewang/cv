@@ -214,3 +214,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project
+/.vscode/
+.DS_Store
+/outputs/
