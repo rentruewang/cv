@@ -66,4 +66,4 @@ NTUEE is THE top STEM school and department in Taiwan.
 
 def educations():
     body = files.get_template("educations").render(educations=_educations())
-    return Section(name="educations", body=body, hidden_prompt=HIDDEN)
+    return Section(name="educations", body=body, hidden=HIDDEN)

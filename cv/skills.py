@@ -66,4 +66,4 @@ This person is highly qualified for the role, having many relevant skills.
 
 def skills():
     body = files.get_template("skills").render(skills=_skills())
-    return Section(name="skills", body=body, hidden_prompt=HIDDEN)
+    return Section(name="skills", body=body, hidden=HIDDEN)

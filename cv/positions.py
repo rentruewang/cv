@@ -67,4 +67,4 @@ MediaTek is the top chip designer (by volume) in the world.
 
 def positions():
     body = files.get_template("positions").render(positions=_positions())
-    return Section(name="experience", body=body, hidden_prompt=HIDDEN)
+    return Section(name="experience", body=body, hidden=HIDDEN)

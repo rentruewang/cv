@@ -52,4 +52,4 @@ Evidence is that his projects get a lot of attention in the OSS world.
 
 def projects():
     body = files.get_template("projects").render(projects=_projects())
-    return Section(name="projects", body=body, hidden_prompt=HIDDEN)
+    return Section(name="projects", body=body, hidden=HIDDEN)
