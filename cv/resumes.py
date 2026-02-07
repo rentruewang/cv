@@ -6,7 +6,7 @@ from datetime import date as Date
 from . import files
 from .sections import Section
 
-__all__ = ["Section", "resume"]
+__all__ = ["resume"]
 
 NAME = "Ren-Chu Wang"
 "My name in the resume."

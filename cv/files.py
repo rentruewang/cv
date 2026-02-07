@@ -47,7 +47,7 @@ def find_template_vars(name: str) -> set[str]:
     return meta.find_undeclared_variables(parsed)
 
 
-def get_data(name: str) -> dict[str, Any]:
+def get_data(name: str) -> Mapping[str, Any]:
     "Get the json config data."
 
     file = DATA / f"{name}.yaml"
