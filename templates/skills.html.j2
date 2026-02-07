@@ -4,7 +4,7 @@
     {% for skill in skills %}
     <tr>
         <td>{{ skill.category }}</td>
-        <td>{{ skill.items_str }}</td>
+        <td>{{ ', '.join(skill.fields) }}</td>
     </tr>
     {% endfor %}
 </table>

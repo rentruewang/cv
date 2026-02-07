@@ -4,7 +4,7 @@ from collections.abc import Iterable
 from datetime import date as Date
 
 from . import files
-from .renderer import Section
+from .sections import Section
 
 __all__ = ["Section", "resume"]
 

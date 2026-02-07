@@ -34,7 +34,7 @@ def output_and_print(out: str) -> None:
     with (files.BUILD / "index.html").open("w+") as f:
         print(out, file=f)
 
-    shutil.copy2(files.SOURCE / "resume.css", files.BUILD)
+    shutil.copy2(files.TEMPLATE / "resume.css", files.BUILD)
 
     rich.print(out)
 
