@@ -4,7 +4,7 @@ from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, Template
 
-ROOT = Path(__file__).parent.parent
+ROOT = Path(__file__).parent.parent.absolute()
 "Project root."
 
 SOURCE = ROOT / "templates"
