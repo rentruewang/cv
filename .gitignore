@@ -218,4 +218,4 @@ __marimo__/
 # Project
 /.vscode/
 .DS_Store
-/output
+/output/
