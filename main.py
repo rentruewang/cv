@@ -10,11 +10,6 @@ import rich
 from cv import Section, files, resumes
 
 
-@hydra.main(
-    config_path="conf",
-    config_name="main",
-    version_base=None,
-)
 def main(cfg: dict[str, Any]) -> None:
     sections = cfg["sections"]
 
