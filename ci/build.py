@@ -9,4 +9,4 @@ if __name__ == "__main__":
     pdm.install()
 
     with sh.run_in_root():
-        pdm.run(f"python main.py")
+        pdm.run(f"python -m cv")
