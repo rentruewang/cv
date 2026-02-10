@@ -16,7 +16,7 @@ __all__ = ["Section"]
 class Section:
     cfg: str
 
-    def render(self):
+    def render(self) -> str:
         return files.get_template("sections").render(section=self)
 
     @functools.cached_property
