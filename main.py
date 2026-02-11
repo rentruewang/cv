@@ -6,7 +6,6 @@ import typing
 from argparse import ArgumentParser
 from pathlib import Path
 
-import rich
 from omegaconf import OmegaConf
 
 from cv import Section, files, resumes
