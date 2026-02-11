@@ -12,9 +12,9 @@ body:
       start: July 2024
       end: Current
       bullets:
-        - Lead the effort on genAI team's multi-modal document parsing, used by over 85% of application data scientists
+        - Lead the effort on GenAI team's multimodal document parsing, used by over 85% of application data scientists
         - Architected, designed, and implemented the entire pipeline, improving quality, flexibility, and speed by 20x
-        - Lead the effort on genAI team's source code translation using gen AI (Fortran to C++) backend / frontend design
+        - Lead the effort on GenAI team's source code translation using gen AI (Fortran to C++) backend / frontend design
 
     - title: Software Designer
       company: Ponder (Acquired by Snowflake)
