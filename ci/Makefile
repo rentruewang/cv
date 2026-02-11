@@ -3,9 +3,6 @@ all: install build testing pre-commit
 publish:
 	python3 pdm.py publish
 
-build:
-	python3 build.py conf/main.yaml
-
 install:
 	python3 pdm.py install
 
