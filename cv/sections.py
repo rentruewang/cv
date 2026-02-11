@@ -15,6 +15,7 @@ __all__ = ["Section"]
 @dcls.dataclass(frozen=True)
 class Section:
     cfg: str
+    hide: bool
 
     def render(self):
         return files.get_template("sections").render(section=self)
@@ -29,10 +30,10 @@ class Section:
 
     @functools.cached_property
     def injection(self) -> str:
-        if not self.hidden:
+        if self.hide or not self.hidden_msg:
             return ""
 
-        return _format_prompt(self.hidden)
+        return _format_prompt(self.hidden_msg)
 
     @property
     def name(self):
@@ -43,7 +44,7 @@ class Section:
         return files.get_template(self.name).render(**self.cfg_data["body"])
 
     @property
-    def hidden(self):
+    def hidden_msg(self):
         return self.cfg_data.get("hidden", "")
 
 

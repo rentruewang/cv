@@ -1,5 +1,6 @@
 # Copyright (c) RenChu Wang - All Rights Reserved
 
+import subprocess as sp
 from collections.abc import Iterable
 from datetime import date as Date
 
@@ -12,9 +13,16 @@ NAME = "Ren-Chu Wang"
 "My name in the resume."
 
 
-def resume(sections: Iterable[Section]):
+def resume(sections: Iterable[Section]) -> str:
+    today = Date.today().strftime("%b %d, %Y")
+    sha = git_sha()
     return files.get_template("resume").render(
         name=NAME,
-        build_date=Date.today().strftime("%B %d, %Y"),
+        today=today,
+        build=sha,
         sections=sections,
     )
+
+
+def git_sha() -> str:
+    return sp.check_output(["git", "rev-parse", "--short", "HEAD"]).decode().strip()

@@ -1,38 +1,59 @@
 # Copyright (c) RenChu Wang - All Rights Reserved
 
-
+import dataclasses as dcls
 import shutil
-from typing import Any
+import typing
+from argparse import ArgumentParser
+from pathlib import Path
 
-import hydra
-import rich
+from omegaconf import OmegaConf
 
 from cv import Section, files, resumes
 
 
-@hydra.main(
-    config_path="conf",
-    config_name="main",
-    version_base=None,
-)
-def main(cfg: dict[str, Any]) -> None:
-    sections = cfg["sections"]
-
-    out = resumes.resume(Section(sec) for sec in sections)
-
-    # Write output.
-    output_and_print(out)
+@dcls.dataclass(frozen=True)
+class GenerationConfig:
+    sections: list[str]
+    hide: bool
+    to: str
 
 
-def output_and_print(out: str) -> None:
+@typing.no_type_check
+def main(cfg: Path) -> None:
+    assert cfg.exists() and cfg.is_file()
+    flags = dict(OmegaConf.load(cfg))
+
     files.BUILD.mkdir(exist_ok=True)
-    with (files.BUILD / "index.html").open("w+") as f:
-        print(out, file=f)
+    if not (gitignore := files.BUILD / ".gitignore").exists():
+        gitignore.write_text("*")
 
-    shutil.copy2(files.TEMPLATE / "resume.css", files.BUILD)
+    for injection in flags["injection"]:
+        gc = GenerationConfig(
+            sections=flags["sections"],
+            hide=injection["hide"],
+            to=injection["to"],
+        )
+        generate_resume(gc)
+    _ = shutil.copy2(files.TEMPLATE / "resume.css", files.BUILD)
 
-    rich.print(out)
+
+def generate_resume(cfg: GenerationConfig, /):
+    out = resumes.resume(Section(sec, hide=cfg.hide) for sec in cfg.sections)
+    tee(out, file=cfg.to)
+
+
+def tee(out: str, file: str) -> None:
+    with (files.BUILD / file).open("w+") as f:
+        _ = f.write(out)
 
 
 if __name__ == "__main__":
-    main()
+    CWD = Path(__file__).parent
+    parser = ArgumentParser()
+    _ = parser.add_argument(
+        "--cfg",
+        type=Path,
+        default=CWD / "config.yaml",
+    )
+    flags = vars(parser.parse_args())
+    main(**flags)

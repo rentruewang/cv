@@ -1,0 +1,11 @@
+sections:
+  - contacts
+  - positions
+  - educations
+  - projects
+  - skills
+injection:
+  - hide: true
+    to: index.html
+  - hide: false
+    to: alt.html
