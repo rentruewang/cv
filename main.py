@@ -37,12 +37,11 @@ def main(cfg: Path) -> None:
 
 
 def generate_resume(cfg: GenerationConfig, /):
-    out = resumes.resume(Section(sec) for sec in cfg.sections)
-    tee(out, file="index.html")
+    out = resumes.resume(Section(sec, hide=cfg.hide) for sec in cfg.sections)
+    tee(out, file=cfg.to)
 
 
 def tee(out: str, file: str) -> None:
-    rich.print(out)
     with (files.BUILD / file).open("w+") as f:
         _ = f.write(out)
 

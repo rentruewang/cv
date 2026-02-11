@@ -17,7 +17,7 @@
 
         <!-- HEADER -->
         <div class="name"> {{ name }}</div>
-        <div class="subtitle"> {{ build }} </div>
+        <div class="subtitle"> Build: {{ today }} ({{ build }}) </div>
         {% for section in sections %}
             {{ section.render() }}
         {% endfor %}

@@ -14,11 +14,12 @@ NAME = "Ren-Chu Wang"
 
 
 def resume(sections: Iterable[Section]) -> str:
-    today = Date.today().strftime("%B %d, %Y")
+    today = Date.today().strftime("%b %d, %Y")
     sha = git_sha()
     return files.get_template("resume").render(
         name=NAME,
-        build=f"{today} <br> Build: {sha}",
+        today=today,
+        build=sha,
         sections=sections,
     )
 
