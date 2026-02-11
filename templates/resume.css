@@ -113,9 +113,8 @@ li {
     color: #fdfdfd;
     font-size: 1px;
     line-height: 0.2;
-    margin: 0;
-    padding: 0;
+    margin: -20;
+    padding: -20;
     display: inline;
     white-space: nowrap;
-    float: right;
 }
