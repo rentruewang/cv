@@ -1,22 +1,18 @@
 # Copyright (c) RenChu Wang - All Rights Reserved
 
-
 import shutil
-from typing import Any
+from pathlib import Path
 
-import hydra
+import fire
 import rich
+from omegaconf import OmegaConf
 
-from cv import Section, files, resumes
+from . import Section, files, resumes
 
 
-@hydra.main(
-    config_path="conf",
-    config_name="main",
-    version_base=None,
-)
-def main(cfg: dict[str, Any]) -> None:
-    sections = cfg["sections"]
+def main(cfg: Path) -> None:
+    flags = dict(OmegaConf.load(cfg))
+    sections = flags["sections"]
 
     out = resumes.resume(Section(sec) for sec in sections)
 
@@ -35,4 +31,4 @@ def output_and_print(out: str) -> None:
 
 
 if __name__ == "__main__":
-    main()
+    fire.Fire(main)

@@ -4,7 +4,7 @@ publish:
 	python3 pdm.py publish
 
 build:
-	python3 build.py
+	python3 build.py conf/main.yaml
 
 install:
 	python3 pdm.py install
