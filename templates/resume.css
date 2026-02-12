@@ -110,6 +110,12 @@ li {
     }
 }
 
+@media print {
+    div {
+        break-inside: avoid;
+    }
+}
+
 /* Always invisible, extractable, and in-flow */
 .invisible {
     color: #fdfdfd;
