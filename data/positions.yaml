@@ -14,13 +14,13 @@ body:
       tasks:
       - name: Multimodal Parsing
         bullets:
-          - Lead the effort (architect, design, implementation) on GenAI team's multimodal document parsing, used by over 85% of application data scientists.
+          - Lead the effort (architect, design, implementation) on GenAI team's **multimodal document parsing**, used by over **85%** of customers.
           - Supports multiple document types (text, images, tables, audio, video).
-          - Improve qualities and reduce error rates with various features of documents (hierarchical extraction, page stitching etc).
-          - Async pipline mproves speed by over 10 times.
+          - Improve qualities with various features of documents (hierarchical extraction, page stitching etc), as well as automatic tuning techniques with **LLM**.
+          - Async pipeline improves speed by **over 10 times**.
       - name: Source Code Translation (Fortran to C++)
         bullets:
-          - Using LLM with RAG for base translation, with syntax-aware, language agnostic source code parsing.
+          - Using **LLM** with **RAG** for base translation, with syntax-aware, language agnostic source code parsing.
           - Test on the original tests with C FFI (> 99% accuracy).
           - Wrote an UI that handles LLM calls and compilation asynchronously.
 
@@ -31,12 +31,12 @@ body:
       tasks:
       - name: RL Floor Planning
         bullets:
-          - Designed and implemented an RL-based AI/EDA system speeding up initial chip development of the world's biggest chip design by 3x.
-          - Proposed and validated RL-based chip design models to justify solution quality
+          - Designed and implemented an **RL** **AI** / **EDA** system speeding up initial chip development of the world's biggest chip design by **3 times**.
+          - Proposed and validated **RL** **agent**-based chip design models to justify solution quality.
       - name: Multihop Retrieval Model
         bullets:
-          - Improved a RAG system and reduced error rate by 40% with multihop document retrieval.
-          - Speed up the distributed AI trainer by 30% via careful profiling and critical-path reduction.
+          - Improved a **RAG** system and reduced error rate by **40%** with multihop document retrieval.
+          - Speed up the **distributed** **LLM** trainer by **30%** via careful profiling and critical-path reduction.
 
     - title: Software Designer
       company: Ponder (Acquired by Snowflake)
@@ -44,5 +44,5 @@ body:
       end: Jul 2023
       tasks:
       - bullets:
-          - Integrated ML (vector retrieval) pipeline functionality into pandas pipeline.
-          - Interactive debugging capabilities that fixed several high importance, found 1 critical SQL bug in the deployment.
+          - Integrated **ML** (**vector retrieval**) pipeline functionality into pandas pipeline.
+          - Interactive debugging capabilities that fixed several high importance, found 1 critical **SQL** bug in the deployment.
