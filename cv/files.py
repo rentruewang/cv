@@ -52,10 +52,10 @@ class MarkdownRender:
         if isinstance(obj, str):
             return self.IsRendered(self._md.renderInline(obj))
 
-        if isinstance(obj, Mapping()):
+        if isinstance(obj, Mapping):
             return {key: self._render(val) for key, val in obj.items()}
 
-        if isinstance(obj, Iterable()):
+        if isinstance(obj, Iterable):
             return [self._render(val) for val in obj]
 
         # Do not recurse into custom objects.

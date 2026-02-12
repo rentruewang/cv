@@ -1,8 +1,27 @@
 {% for project in projects %}
 <div class="entry">
     <div class="entry-header">
-        <div>{{ project.title }}</div>
-        <div>{{ project.date }}</div>
+        <div>
+            <div class="fa-brands fa-github"></div>
+            <a href=" {{ project.github }} ">
+
+                {{ project.title }}
+
+            </a>
+        </div>
+        <div>
+            {% if project.stars %}
+            {{ project.stars }}
+            <i class="fa fa-star"></i>
+            {% endif %}
+            {% if project.forks %}
+            {{ project.forks }}
+            <i class="fa-solid fa-code-fork"></i>
+            {% endif %}
+        </div>
+    </div>
+    <div class="entry-sub">
+        {{ project.subtitle }}
     </div>
 
     {% if project.bullets %}
