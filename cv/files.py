@@ -49,25 +49,17 @@ class MarkdownRender:
         if isinstance(obj, self.IsRendered):
             return obj
 
-        match obj:
-            case None | int() | float() | bool():
-                return obj
+        if isinstance(obj, str):
+            return self.IsRendered(self._md.renderInline(obj))
 
-            case str():
-                return self.IsRendered(self._md.renderInline(obj))
+        if isinstance(obj, Mapping()):
+            return {key: self._render(val) for key, val in obj.items()}
 
-            case Mapping():
-                return {key: self._render(val) for key, val in obj.items()}
+        if isinstance(obj, Iterable()):
+            return [self._render(val) for val in obj]
 
-            case Iterable():
-                return [self._render(val) for val in obj]
-
-            # Do not recurse into custom objects.
-            case object():
-                return obj
-
-            case _:
-                raise TypeError(type(obj))
+        # Do not recurse into custom objects.
+        return obj
 
     @functools.cached_property
     def _md(self):
