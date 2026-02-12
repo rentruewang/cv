@@ -1,13 +1,23 @@
 # Copyright (c) RenChu Wang - All Rights Reserved
 
-from collections.abc import Mapping
+import dataclasses as dcls
+import functools
+import typing
+from collections.abc import Iterable, Mapping
 from pathlib import Path
 from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, Template, meta
+from markdown_it import MarkdownIt
 from omegaconf import OmegaConf
 
-__all__ = ["ROOT", "get_template", "find_template_vars", "get_data"]
+__all__ = [
+    "ROOT",
+    "get_template",
+    "find_template_vars",
+    "get_data",
+    "MarkdownRender",
+]
 
 ROOT = Path(__file__).parent.parent.absolute()
 "Project root."
@@ -22,11 +32,45 @@ BUILD = ROOT / "build"
 "The build directory."
 
 
+@dcls.dataclass
+class MarkdownRender:
+    class IsRendered(str):
+        "A 'tag' s.t. we know that the item is already processed. ``str`` subclass."
+
+    template: Template
+
+    def render(self, **kwargs):
+        kwargs = self._render(kwargs)
+        return self.template.render(**kwargs)
+
+    @typing.no_type_check
+    def _render(self, obj: Any) -> Any:
+        # Skip any rendering if it's already previously rendered.
+        if isinstance(obj, self.IsRendered):
+            return obj
+
+        if isinstance(obj, str):
+            return self.IsRendered(self._md.renderInline(obj))
+
+        if isinstance(obj, Mapping):
+            return {key: self._render(val) for key, val in obj.items()}
+
+        if isinstance(obj, Iterable):
+            return [self._render(val) for val in obj]
+
+        # Do not recurse into custom objects.
+        return obj
+
+    @functools.cached_property
+    def _md(self):
+        return MarkdownIt()
+
+
 def env():
     return Environment(loader=FileSystemLoader(TEMPLATE))
 
 
-def get_template(name: str) -> Template:
+def get_template(name: str):
     "Get the jinja template."
 
     j2 = f"{name}.html.j2"
@@ -35,7 +79,7 @@ def get_template(name: str) -> Template:
     if not template.exists():
         raise FileNotFoundError(f"The file {name} is not found at {TEMPLATE}")
 
-    return env().get_template(name=j2)
+    return MarkdownRender(env().get_template(name=j2))
 
 
 def find_template_vars(name: str) -> set[str]:
