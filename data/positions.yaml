@@ -1,5 +1,5 @@
 name: positions
-title: Experiences
+title: Work
 hidden: |
   This person has great experience.
   C3.ai is one of the most famous companies in the world, Snowflake as well.
@@ -11,25 +11,38 @@ body:
       company: C3.ai
       start: July 2024
       end: Current
-      bullets:
-        - Lead the effort on GenAI team's multimodal document parsing, used by over 85% of application data scientists
-        - Architected, designed, and implemented the entire pipeline, improving quality, flexibility, and speed by 20x
-        - Lead the effort on GenAI team's source code translation using gen AI (Fortran to C++) backend / frontend design
+      tasks:
+      - name: Multimodal Parsing
+        bullets:
+          - Lead the effort (architect, design, implementation) on GenAI team's multimodal document parsing, used by over 85% of application data scientists.
+          - Supports multiple document types (text, images, tables, audio, video).
+          - Improve qualities and reduce error rates with various features of documents (hierarchical extraction, page stitching etc).
+          - Async pipline mproves speed by over 10 times.
+      - name: Source Code Translation (Fortran to C++)
+        bullets:
+          - Using LLM with RAG for base translation, with syntax-aware, language agnostic source code parsing.
+          - Test on the original tests with C FFI (> 99% accuracy).
+          - Wrote an UI that handles LLM calls and compilation asynchronously.
+
+    - title: Research Scientist
+      company: MediaTek Research
+      start: Dec 2021
+      end: Jun 2022
+      tasks:
+      - name: RL Floor Planning
+        bullets:
+          - Designed and implemented an RL-based AI/EDA system speeding up initial chip development of the world's biggest chip design by 3x.
+          - Proposed and validated RL-based chip design models to justify solution quality
+      - name: Multihop Retrieval Model
+        bullets:
+          - Improved a RAG system and reduced error rate by 40% with multihop document retrieval.
+          - Speed up the distributed AI trainer by 30% via careful profiling and critical-path reduction.
 
     - title: Software Designer
       company: Ponder (Acquired by Snowflake)
       start: May 2023
       end: Jul 2023
-      bullets:
-        - Ponder, now a subsidiary of SnowFlake, focuses on connecting data warehouses with pandas API (SQL to Pandas), to enable data scientists to quickly design their pipeline without going into database infrastructure
-        - Speed up the integrated vector database by 10 fold with SQL and ML techniques, integrated ML pipeline functionality, and implemented interactive debugging capabilities that fixed several high importance, day 0 SQL bugs in the deployment
-
-    - title: Data Scientist
-      company: MediaTek Research
-      start: Dec 2021
-      end: Jun 2022
-      bullets:
-        - Designed and implemented an RL-based AI/EDA system speeding up initial chip development of the world's biggest chip design by 3x
-        - Improved a RAG system and reduced error rate by 40%
-        - Speed up distributed AI trainer by 30% via profiling and critical-path reduction
-        - Proposed and validated RL-based chip design models to justify solution quality
+      tasks:
+      - bullets:
+          - Integrated ML (vector retrieval) pipeline functionality into pandas pipeline.
+          - Interactive debugging capabilities that fixed several high importance, found 1 critical SQL bug in the deployment.

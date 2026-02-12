@@ -64,10 +64,12 @@ body {
     display: flex;
     justify-content: space-between;
     font-weight: bold;
+    font-size: 16px;
 }
 
 .entry-sub {
     font-style: italic;
+    font-size: 14px;
 }
 
 ul {

@@ -5,12 +5,20 @@
         <div>{{ pos.start }} - {{ pos.end }} </div>
     </div>
 
-    {% if pos.bullets %}
+    {% for task in pos.tasks %}
+
+    {% if task.name %}
+    <div class="entry-sub">
+        {{ task.name }}
+    </div>
+    {% endif %}
+
     <ul>
-        {% for bullet in pos.bullets %}
+        {% for bullet in task.bullets %}
         <li>{{ bullet }}</li>
         {% endfor %}
     </ul>
-    {% endif %}
+
+    {% endfor %}
 </div>
 {% endfor %}
