@@ -23,10 +23,15 @@ def main(cfg: Path) -> None:
     assert cfg.exists() and cfg.is_file()
     flags = dict(OmegaConf.load(cfg))
 
+    # Make directory
     files.BUILD.mkdir(exist_ok=True)
     if not (gitignore := files.BUILD / ".gitignore").exists():
         gitignore.write_text("*")
 
+    # Copy CSS.
+    _ = shutil.copy2(files.TEMPLATE / "resume.css", files.BUILD)
+
+    # Copy files.
     for injection in flags["injection"]:
         gc = GenerationConfig(
             sections=flags["sections"],
@@ -34,7 +39,6 @@ def main(cfg: Path) -> None:
             to=injection["to"],
         )
         generate_resume(gc)
-    _ = shutil.copy2(files.TEMPLATE / "resume.css", files.BUILD)
 
 
 def generate_resume(cfg: GenerationConfig, /):
