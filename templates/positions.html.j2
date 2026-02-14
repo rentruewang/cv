@@ -7,11 +7,9 @@
 
     {% for task in pos.tasks %}
 
-    {% if task.name %}
     <div class="entry-sub">
-        {{ task.name }}
+        {{ task.name }} ({{ task.langs }})
     </div>
-    {% endif %}
 
     <ul>
         {% for bullet in task.bullets %}

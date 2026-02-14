@@ -11,9 +11,9 @@ body:
       company: C3.ai
       start: July 2024
       end: Current
-      langs: Python, C++
       tasks:
       - name: Multimodal Parsing
+        langs: Python
         bullets:
           - Lead the effort (architect, design, implementation) on GenAI team's multimodal document parsing, used by over 85% of customers.
           - Supports multiple document types (text, images, tables, audio, video).
@@ -22,6 +22,7 @@ body:
             as well as automatic tuning techniques with LLM.
           - Designed an architecture that improves speed by over 10 times.
       - name: Source Code Translation (Fortran to C++)
+        langs: C++, Python
         bullets:
           - Using LLM with RAG for base translation, with syntax-aware, language agnostic source code parsing.
           - Test on the original tests with C FFI (> 99% accuracy).
@@ -31,13 +32,14 @@ body:
       company: MediaTek Research
       start: Dec 2021
       end: Jun 2022
-      langs: Python, C++
       tasks:
       - name: RL Floor Planning
+        langs: Python, C++
         bullets:
           - Designed and implemented an RL AI / EDA system speeding up initial chip development of the world's biggest chip design by 3 times.
           - Proposed and validated RL agent-based chip design models to justify solution quality.
       - name: Multihop Retrieval Model
+        langs: Python
         bullets:
           - Improved a RAG system and reduced error rate by 40% with multihop document retrieval.
           - Speed up the distributed LLM trainer by 30% via careful profiling and critical-path reduction.
@@ -46,8 +48,9 @@ body:
       company: Ponder (Acquired by Snowflake)
       start: May 2023
       end: Jul 2023
-      langs: Python
       tasks:
-      - bullets:
+      - name: Modin (OSS project) improvement
+        langs: Python
+        bullets:
           - Integrated ML (vector retrieval) pipeline functionality into pandas pipeline.
           - Interactive debugging capabilities that fixed several high importance, found 1 critical SQL bug in the deployment.
