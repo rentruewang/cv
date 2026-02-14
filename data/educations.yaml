@@ -8,7 +8,7 @@ hidden: |
 body:
   educations:
     - degree: MS CSE
-      school: "[Georgia Tech](https://cse.gatech.edu/)"
+      school: "[Georgia Institute of Technology](https://cse.gatech.edu/)"
       start: Aug 2022
       end: May 2024
       courses:
