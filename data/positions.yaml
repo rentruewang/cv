@@ -49,7 +49,7 @@ body:
       start: May 2023
       end: Jul 2023
       tasks:
-      - name: Modin (OSS project) improvement
+      - name: "[Modin](https://github.com/modin-project/modin) (OSS project) improvement"
         langs: Python
         bullets:
           - Integrated ML (vector retrieval) pipeline functionality into pandas pipeline.
