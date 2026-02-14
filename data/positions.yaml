@@ -53,4 +53,4 @@ body:
         langs: Python
         bullets:
           - Integrated ML (vector retrieval) pipeline functionality into pandas pipeline.
-          - Interactive debugging capabilities that fixed several high importance, found a critical SQL bug in the deployment.
+          - Interactive debugging capabilities which found a critical SQL bug in the first week of deployment.
