@@ -26,7 +26,7 @@ body:
         bullets:
           - Using LLM with RAG for base translation, with syntax-aware, language agnostic source code parsing.
           - Test on the original tests with C FFI (> 99% accuracy).
-          - Wrote an UI that handles LLM calls and compilation asynchronously.
+          - Wrote an UI that handles LLM calls and compilation in an async manner.
 
     - title: Research Scientist
       company: MediaTek Research
