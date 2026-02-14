@@ -45,11 +45,11 @@ body:
           - Speed up the distributed LLM trainer by 30% via careful profiling and critical-path reduction.
 
     - title: Software Engineer
-      company: Ponder (Acquired by Snowflake)
+      company: Ponder (Acquired by snowflake, maker of [modin](https://github.com/modin-project/modin))
       start: May 2023
       end: Jul 2023
       tasks:
-      - name: "[Modin](https://github.com/modin-project/modin) (OSS project) improvement"
+      - name: "MLE / performance improvement"
         langs: Python
         bullets:
           - Integrated ML (vector retrieval) pipeline functionality into pandas pipeline.
