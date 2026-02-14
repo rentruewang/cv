@@ -33,6 +33,10 @@ BUILD = ROOT / "build"
 "The build directory."
 
 
+_NO_WORD_FRONT = r"(?<!\w)"
+_NO_WORD_BACK = r"(?!\w)"
+
+
 @dcls.dataclass
 class MarkdownRender:
     class IsRendered(str):
@@ -78,8 +82,8 @@ class MarkdownRender:
 
     @functools.cached_property
     def _compile_keywords(self):
-        escaped = [re.escape(kw) for kw in self.keywords]
-        captured = [f"({e})" for e in escaped]
+        wrap = lambda kw: _NO_WORD_FRONT + "(" + kw + ")" + _NO_WORD_BACK
+        captured = [wrap(kw) for kw in self.keywords]
         return [re.compile(r, flags=re.IGNORECASE) for r in captured]
 
     def _mark_keywords_bold(self, text: str):

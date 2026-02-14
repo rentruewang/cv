@@ -8,8 +8,7 @@ from pathlib import Path
 
 from omegaconf import OmegaConf
 
-from cv import SectionContent, files, resumes
-from cv import Section
+from cv import Section, files, resumes
 
 
 @dcls.dataclass(frozen=True)

@@ -11,6 +11,7 @@ body:
       company: C3.ai
       start: July 2024
       end: Current
+      langs: Python, C++
       tasks:
       - name: Multimodal Parsing
         bullets:
@@ -30,6 +31,7 @@ body:
       company: MediaTek Research
       start: Dec 2021
       end: Jun 2022
+      langs: Python, C++
       tasks:
       - name: RL Floor Planning
         bullets:
@@ -44,6 +46,7 @@ body:
       company: Ponder (Acquired by Snowflake)
       start: May 2023
       end: Jul 2023
+      langs: Python
       tasks:
       - bullets:
           - Integrated ML (vector retrieval) pipeline functionality into pandas pipeline.

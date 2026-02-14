@@ -3,7 +3,6 @@ sections:
   - positions
   - educations
   - projects
-  - skills
 injection:
   - fair: true
     to: index.html
@@ -12,4 +11,13 @@ injection:
 keywords:
   - llm
   - rl
-  - agent
+  - agent[s]?
+  - rag
+  - retrieval
+  - \d+[\%]?
+  - ml
+  - ai
+  - eda
+  - multimodal
+  - python
+  - C++
