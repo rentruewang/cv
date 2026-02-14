@@ -10,6 +10,7 @@ def main():
     pdm.install()
 
     with sh.run_in_root():
+        sh.cmd("rm -r build")
         pdm.run(f"python main.py")
 
 
