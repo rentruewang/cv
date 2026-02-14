@@ -3,6 +3,7 @@
 import gha
 import pdm
 import sh
+import shutil
 
 
 def main():
@@ -10,7 +11,7 @@ def main():
     pdm.install()
 
     with sh.run_in_root():
-        sh.cmd("rm -r build")
+        shutil.rmtree("build", ignore_errors=True)
         pdm.run(f"python main.py")
 
 
