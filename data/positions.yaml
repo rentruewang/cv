@@ -44,7 +44,7 @@ body:
           - Improved a RAG system and reduced error rate by 40% with multihop document retrieval.
           - Speed up the distributed LLM trainer by 30% via careful profiling and critical-path reduction.
 
-    - title: Software Designer
+    - title: Software Engineer
       company: Ponder (Acquired by Snowflake)
       start: May 2023
       end: Jul 2023
