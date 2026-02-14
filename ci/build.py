@@ -1,9 +1,10 @@
 # Copyright (c) RenChu Wang - All Rights Reserved
 
+import shutil
+
 import gha
 import pdm
 import sh
-import shutil
 
 
 def main():
