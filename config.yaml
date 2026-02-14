@@ -5,8 +5,11 @@ sections:
   - projects
   - skills
 injection:
-  - hide: true
+  - fair: true
     to: index.html
-  - hide: false
+  - fair: false
     to: alt.html
-keywords: []
+keywords:
+  - llm
+  - rl
+  - agent

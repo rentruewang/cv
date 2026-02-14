@@ -2,8 +2,9 @@
 
 import dataclasses as dcls
 import functools
+import re
 import typing
-from collections.abc import Iterable, Mapping
+from collections.abc import Iterable, Mapping, Sequence
 from pathlib import Path
 from typing import Any
 
@@ -38,6 +39,14 @@ class MarkdownRender:
         "A 'tag' s.t. we know that the item is already processed. ``str`` subclass."
 
     template: Template
+    """
+    The jinja template to fill.
+    """
+
+    keywords: Sequence[str] = ()
+    """
+    The keywords to be marked in bold.
+    """
 
     def render(self, **kwargs):
         kwargs = self._render(kwargs)
@@ -50,7 +59,9 @@ class MarkdownRender:
             return obj
 
         if isinstance(obj, str):
-            return self.IsRendered(self._md.renderInline(obj))
+            obj = self._mark_keywords_bold(obj)
+            obj = self._md.renderInline(obj)
+            return self.IsRendered(obj)
 
         if isinstance(obj, Mapping):
             return {key: self._render(val) for key, val in obj.items()}
@@ -65,12 +76,24 @@ class MarkdownRender:
     def _md(self):
         return MarkdownIt()
 
+    @functools.cached_property
+    def _compile_keywords(self):
+        escaped = [re.escape(kw) for kw in self.keywords]
+        captured = [f"({e})" for e in escaped]
+        return [re.compile(r, flags=re.IGNORECASE) for r in captured]
+
+    def _mark_keywords_bold(self, text: str):
+        for pattern in self._compile_keywords:
+            text = pattern.sub(r"**\1**", text)
+        assert isinstance(text, str), text
+        return text
+
 
 def env():
     return Environment(loader=FileSystemLoader(TEMPLATE))
 
 
-def get_template(name: str):
+def get_template(name: str, /, keywords: Sequence[str] = ()):
     "Get the jinja template."
 
     j2 = f"{name}.html.j2"
@@ -79,7 +102,7 @@ def get_template(name: str):
     if not template.exists():
         raise FileNotFoundError(f"The file {name} is not found at {TEMPLATE}")
 
-    return MarkdownRender(env().get_template(name=j2))
+    return MarkdownRender(template=env().get_template(name=j2), keywords=keywords)
 
 
 def find_template_vars(name: str) -> set[str]:

@@ -8,14 +8,16 @@ from pathlib import Path
 
 from omegaconf import OmegaConf
 
-from cv import Section, files, resumes
+from cv import SectionContent, files, resumes
+from cv import Section
 
 
 @dcls.dataclass(frozen=True)
 class GenerationConfig:
-    sections: list[str]
-    hide: bool
+    section_name: list[str]
+    fair: bool
     to: str
+    keywords: list[str]
 
 
 @typing.no_type_check
@@ -34,15 +36,20 @@ def main(cfg: Path) -> None:
     # Copy files.
     for injection in flags["injection"]:
         gc = GenerationConfig(
-            sections=flags["sections"],
-            hide=injection["hide"],
+            section_name=flags["sections"],
+            fair=injection["fair"],
             to=injection["to"],
+            keywords=flags["keywords"],
         )
         generate_resume(gc)
 
 
 def generate_resume(cfg: GenerationConfig, /):
-    out = resumes.resume(Section(sec, hide=cfg.hide) for sec in cfg.sections)
+    sections = [
+        Section(cfg=sec, fair=cfg.fair, keywords=cfg.keywords)
+        for sec in cfg.section_name
+    ]
+    out = resumes.resume(sections=sections)
     tee(out, file=cfg.to)
 
 
