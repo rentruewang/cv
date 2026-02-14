@@ -8,7 +8,7 @@ hidden: |
 body:
   positions:
     - title: Data Scientist
-      company: C3.ai
+      company: "[C3.ai](https://c3.ai)"
       start: July 2024
       end: Current
       tasks:
@@ -29,7 +29,7 @@ body:
           - Wrote an UI that handles LLM calls and compilation in an async manner.
 
     - title: Research Scientist
-      company: MediaTek Research
+      company: "[MediaTek Research](https://www.mediatek.com/mediatekresearch)"
       start: Dec 2021
       end: Jun 2022
       tasks:
@@ -45,7 +45,10 @@ body:
           - Speed up the distributed LLM trainer by 30% via careful profiling and critical-path reduction.
 
     - title: Software Engineer
-      company: Ponder (Acquired by snowflake, maker of [modin](https://github.com/modin-project/modin))
+      company: >
+        Ponder
+        (Acquired by [snowflake](https://snowflake.com),
+        maker of [modin](https://github.com/modin-project/modin))
       start: May 2023
       end: Jul 2023
       tasks:
