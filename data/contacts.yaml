@@ -8,8 +8,8 @@ body:
       target: _blank
 
     - icon: fa-solid fa-globe
-      label: cv.rentruewang.com
-      href: https://cv.rentruewang.com
+      label: rentruewang.com
+      href: https://www.rentruewang.com
       target: _blank
 
     - icon: fa-solid fa-phone
