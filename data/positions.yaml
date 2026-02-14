@@ -24,7 +24,7 @@ body:
       - name: Source Code Translation (Fortran to C++)
         langs: C++, Python
         bullets:
-          - Using LLM with RAG for base translation, with syntax-aware, language agnostic source code parsing.
+          - Using LLM with RAG for low-level unit translation, augmented with syntax-aware, language agnostic source code parsing.
           - Test on the original tests with C FFI (> 99% accuracy).
           - Wrote an UI that handles LLM calls and compilation in an async manner.
 
