@@ -14,10 +14,12 @@ keywords:
   - agent[s]?
   - rag
   - retrieval
-  - \d+[\%]?
+  - \d+[\%x]?
   - ml
   - ai
   - eda
   - multimodal
   - python
   - C\+\+
+  - optimization
+  - genai

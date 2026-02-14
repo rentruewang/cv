@@ -15,12 +15,12 @@ body:
       - name: Multimodal Parsing
         langs: Python
         bullets:
-          - Lead the effort (architect, design, implementation) on GenAI team's multimodal document parsing, used by over 85% of customers.
+          - Lead the effort (architect, design, implementation) on GenAI team's multimodal document parsing, used by over 85% of GenAI customers.
           - Supports multiple document types (text, images, tables, audio, video).
           - >
             Improve qualities with various features of documents (hierarchical extraction, page stitching etc),
             as well as automatic tuning techniques with LLM.
-          - Designed an architecture that improves speed by over 10 times.
+          - Designed an architecture that improves speed by over 10x.
       - name: Source Code Translation (Fortran to C++)
         langs: C++, Python
         bullets:
@@ -36,7 +36,7 @@ body:
       - name: RL Floor Planning
         langs: Python, C++
         bullets:
-          - Designed and implemented an RL AI / EDA system speeding up initial chip development of the world's biggest chip design by 3 times.
+          - Designed and implemented an RL AI / EDA system speeding up initial chip development of the world's biggest chip design by 3x.
           - Proposed and validated RL agent-based chip design models to justify solution quality.
       - name: Multihop Retrieval Model
         langs: Python
@@ -53,4 +53,4 @@ body:
         langs: Python
         bullets:
           - Integrated ML (vector retrieval) pipeline functionality into pandas pipeline.
-          - Interactive debugging capabilities that fixed several high importance, found 1 critical SQL bug in the deployment.
+          - Interactive debugging capabilities that fixed several high importance, found a critical SQL bug in the deployment.
