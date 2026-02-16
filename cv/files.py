@@ -59,7 +59,7 @@ class MarkdownRender:
             return obj
 
         if isinstance(obj, str):
-            obj = self._mark_keywords_bold(obj)
+            obj = self._maybe_mark_keywords_bold(obj)
             obj = self._md.renderInline(obj)
             return self.IsRendered(obj)
 
@@ -76,7 +76,9 @@ class MarkdownRender:
     def _md(self):
         return MarkdownIt()
 
-    def _mark_keywords_bold(self, text: str) -> str:
+    def _maybe_mark_keywords_bold(self, text: str) -> str:
+        "Mark the keywords bold. Skip link."
+
         if _is_link(text):
             return text
 
@@ -88,6 +90,7 @@ class MarkdownRender:
 _LINK_REGEX = re.compile(r"(?:__|[*#])|\[(.*?)\]\(.*?\)")
 _WS_FRONT = r"(?<!\w)"
 _WS_BACK = r"(?!\w)"
+
 
 def _is_link(link: str):
     return _LINK_REGEX.match(link) is not None
