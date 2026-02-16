@@ -28,7 +28,7 @@ body:
       courses:
         - Algorithms
         - Convex Optimization
-        - Machine Learning
+        - ML
         - Linear Algebra
         - Digital Speech Processing
         - Data Structures

@@ -1,8 +1,8 @@
 sections:
   - contacts
   - positions
-  - educations
   - projects
+  - educations
 keywords:
   - llm
   - rl
