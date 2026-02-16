@@ -13,9 +13,7 @@ from cv import Section, files, resumes
 
 @dcls.dataclass(frozen=True)
 class GenerationConfig:
-    section_name: list[str]
-    fair: bool
-    to: str
+    sections: list[str]
     keywords: list[str]
 
 
@@ -32,28 +30,17 @@ def main(cfg: Path) -> None:
     # Copy CSS.
     _ = shutil.copy2(files.TEMPLATE / "resume.css", files.BUILD)
 
-    # Copy files.
-    for injection in flags["injection"]:
-        gc = GenerationConfig(
-            section_name=flags["sections"],
-            fair=injection["fair"],
-            to=injection["to"],
-            keywords=flags["keywords"],
-        )
-        generate_resume(gc)
+    gc = GenerationConfig(
+        sections=flags["sections"],
+        keywords=flags["keywords"],
+    )
+    generate_resume(gc)
 
 
 def generate_resume(cfg: GenerationConfig, /):
-    sections = [
-        Section(cfg=sec, fair=cfg.fair, keywords=cfg.keywords)
-        for sec in cfg.section_name
-    ]
+    sections = [Section(cfg=sec, keywords=cfg.keywords) for sec in cfg.sections]
     out = resumes.resume(sections=sections)
-    tee(out, file=cfg.to)
-
-
-def tee(out: str, file: str) -> None:
-    with (files.BUILD / file).open("w+") as f:
+    with (files.BUILD / "index.html").open("w+") as f:
         _ = f.write(out)
 
 

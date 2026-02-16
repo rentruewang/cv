@@ -3,11 +3,6 @@ sections:
   - positions
   - educations
   - projects
-injection:
-  - fair: true
-    to: index.html
-  - fair: false
-    to: alt.html
 keywords:
   - llm
   - rl

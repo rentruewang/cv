@@ -3,11 +3,17 @@
 import dataclasses as dcls
 import functools
 import subprocess as sp
+import sys
 from argparse import ArgumentParser
 from collections.abc import Callable
+from typing import Literal
 
 import gha
 import sh
+
+
+def venv_active() -> bool:
+    return sys.prefix != sys.base_prefix
 
 
 def ensure(binary: str, /):
@@ -44,15 +50,29 @@ def command(command: str, /) -> None:
 
 
 @ensure("pdm")
+def _install_or_sync(mode: Literal["install", "sync"]) -> None:
+    # Don't repeatedly install if venv is active.
+    if venv_active():
+        return
+
+    cmd = f"{mode} -G:all"
+
+    if gha.in_github_actions():
+        cmd += " -v"
+
+    command(cmd)
+
+
 def install() -> None:
     "Install the dependencies. Might update ``pdm.lock``."
 
-    cmd = "install -G:all"
+    _install_or_sync("install")
 
-    if gha.in_github_actions():
-        cmd = f"{cmd} -v"
 
-    command(cmd)
+def sync() -> None:
+    "Use the dependencies in ``pdm.lock``."
+
+    _install_or_sync("sync")
 
 
 @ensure("pdm")
