@@ -70,6 +70,8 @@ def install() -> None:
 
 
 def sync() -> None:
+    "Use the dependencies in ``pdm.lock``."
+
     _install_or_sync("sync")
 
 
