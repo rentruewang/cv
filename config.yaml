@@ -4,9 +4,4 @@ sections:
   - educations
   - projects
   - skills
-injection:
-  - hide: true
-    to: index.html
-  - hide: false
-    to: alt.html
 keywords: []

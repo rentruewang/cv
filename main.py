@@ -1,6 +1,5 @@
 # Copyright (c) RenChu Wang - All Rights Reserved
 
-import dataclasses as dcls
 import shutil
 import typing
 from argparse import ArgumentParser
@@ -9,13 +8,6 @@ from pathlib import Path
 from omegaconf import OmegaConf
 
 from cv import Section, files, resumes
-
-
-@dcls.dataclass(frozen=True)
-class GenerationConfig:
-    sections: list[str]
-    hide: bool
-    to: str
 
 
 @typing.no_type_check
@@ -32,22 +24,12 @@ def main(cfg: Path) -> None:
     _ = shutil.copy2(files.TEMPLATE / "resume.css", files.BUILD)
 
     # Copy files.
-    for injection in flags["injection"]:
-        gc = GenerationConfig(
-            sections=flags["sections"],
-            hide=injection["hide"],
-            to=injection["to"],
-        )
-        generate_resume(gc)
+    generate_resume(flags["sections"])
 
 
-def generate_resume(cfg: GenerationConfig, /):
-    out = resumes.resume(Section(sec, hide=cfg.hide) for sec in cfg.sections)
-    tee(out, file=cfg.to)
-
-
-def tee(out: str, file: str) -> None:
-    with (files.BUILD / file).open("w+") as f:
+def generate_resume(sections: list[str], /):
+    out = resumes.resume(Section(sec) for sec in sections)
+    with (files.BUILD / "index.html").open("w+") as f:
         _ = f.write(out)
 
 
