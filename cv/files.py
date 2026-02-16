@@ -33,10 +33,6 @@ BUILD = ROOT / "build"
 "The build directory."
 
 
-_NO_WORD_FRONT = r"(?<!\w)"
-_NO_WORD_BACK = r"(?!\w)"
-
-
 @dcls.dataclass
 class MarkdownRender:
     class IsRendered(str):
@@ -80,17 +76,34 @@ class MarkdownRender:
     def _md(self):
         return MarkdownIt()
 
-    @functools.cached_property
-    def _compile_keywords(self):
-        wrap = lambda kw: _NO_WORD_FRONT + "(" + kw + ")" + _NO_WORD_BACK
-        captured = [wrap(kw) for kw in self.keywords]
-        return [re.compile(r, flags=re.IGNORECASE) for r in captured]
+    def _mark_keywords_bold(self, text: str) -> str:
+        if _is_link(text):
+            return text
 
-    def _mark_keywords_bold(self, text: str):
-        for pattern in self._compile_keywords:
-            text = pattern.sub(r"**\1**", text)
+        text = _highlight_keywords(text, self.keywords)
         assert isinstance(text, str), text
         return text
+
+
+_LINK_REGEX = re.compile(r"(?:__|[*#])|\[(.*?)\]\(.*?\)")
+_WS_FRONT = r"(?<!\w)"
+_WS_BACK = r"(?!\w)"
+
+def _is_link(link: str):
+    return _LINK_REGEX.match(link) is not None
+
+
+@functools.cache
+def _isolated_keyword(kw: str):
+    kw = _WS_FRONT + "(" + kw + ")" + _WS_BACK
+    return re.compile(kw, flags=re.IGNORECASE)
+
+
+def _highlight_keywords(text: str, keywords: Sequence[str]) -> str:
+    for kw in keywords:
+        pattern = _isolated_keyword(kw)
+        text = pattern.sub(r"**\1**", text)
+    return text
 
 
 def env():
