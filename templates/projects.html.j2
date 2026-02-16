@@ -10,6 +10,11 @@
             </a>
         </div>
         <div>
+            {% for badge in project.badges %}
+            {{ badge.qualifier }}
+            <i class="{{ badge.icon }}"></i>
+            {% endfor %}
+
             {% if project.stars %}
             {{ project.stars }}
             <i class="fa fa-star"></i>

@@ -10,7 +10,9 @@ body:
       subtitle: |
         10x faster LLM evaluation with Bayesian optimization and NLP
       github: https://github.com/rentruewang/bocoel
-      stars: 250+
+      badges:
+        - qualifier: 250+
+          icon: fa fa-star
       langs: Python
       bullets:
         - This is an automated system that speeds up LLM benchmarking by 10x.
@@ -22,8 +24,11 @@ body:
         ML library for fixing CUDA (GPU) issues in single line
       github: https://github.com/rentruewang/koila
       langs: Python
-      stars: 1800+
-      forks: 50+
+      badges:
+        - qualifier: 1800+
+          icon: fa fa-star
+        - qualifier: 50+
+          icon: fa-solid fa-code-fork
       bullets:
         - Uses lazy evaluation to solve out-of-memory errors in PyTorch with a minimal API.
         - Supports CNN, GNN, RNN, Linear layers, and arbitrary PyTorch ops.
@@ -33,7 +38,9 @@ body:
         ML book in question answer format (stack overflow style)
       github: https://github.com/rentruewang/learning-machine
       langs: Python
-      stars: 500
+      badges:
+        - qualifier: 500
+          icon: fa fa-star
       bullets:
         - Compile from, and serve to, 1300+ students (ML class where I was a TA).
 
@@ -41,6 +48,8 @@ body:
       subtitle: Stock allocation advisor powered by explainable AI LLM agents
       github: https://github.com/rentruewang/hackgt-app
       langs: Python
+      badges:
+        - icon: fas fa-medal
       bullets:
         - Led a team of 4 to win 1st place out of 1500 participants in BlackRock's event.
         - Designed fintech ML models for transparent NLP-based financial decisions.
