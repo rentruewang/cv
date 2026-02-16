@@ -21,3 +21,7 @@ keywords:
   - nlp
   - mle
   - async
+  - cuda
+  - sql
+  - gpu
+  - pytorch
