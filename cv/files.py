@@ -33,10 +33,12 @@ BUILD = ROOT / "build"
 "The build directory."
 
 
+class _IsRendered(str):
+    "A 'tag' s.t. we know that the item is already processed. ``str`` subclass."
+
+
 @dcls.dataclass
 class MarkdownRender:
-    class IsRendered(str):
-        "A 'tag' s.t. we know that the item is already processed. ``str`` subclass."
 
     template: Template
     """
@@ -54,23 +56,25 @@ class MarkdownRender:
 
     @typing.no_type_check
     def _render(self, obj: Any) -> Any:
-        # Skip any rendering if it's already previously rendered.
-        if isinstance(obj, self.IsRendered):
-            return obj
+        match obj:
+            # Skip any rendering if it's already previously rendered.
+            case _IsRendered():
+                return obj
 
-        if isinstance(obj, str):
-            obj = self._maybe_mark_keywords_bold(obj)
-            obj = self._md.renderInline(obj)
-            return self.IsRendered(obj)
+            case str():
+                obj = self._maybe_mark_keywords_bold(obj)
+                obj = self._md.renderInline(obj)
+                return _IsRendered(obj)
 
-        if isinstance(obj, Mapping):
-            return {key: self._render(val) for key, val in obj.items()}
+            case Mapping():
+                return {key: self._render(val) for key, val in obj.items()}
 
-        if isinstance(obj, Iterable):
-            return [self._render(val) for val in obj]
+            case Iterable():
+                return [self._render(val) for val in obj]
 
-        # Do not recurse into custom objects or ints floats.
-        return obj
+            # Do not recurse into custom objects or primitives.
+            case _:
+                return obj
 
     @functools.cached_property
     def _md(self):
