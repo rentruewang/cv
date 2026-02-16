@@ -10,18 +10,14 @@
             </a>
         </div>
         <div>
-            {% if project.stars %}
-            {{ project.stars }}
-            <i class="fa fa-star"></i>
-            {% endif %}
-            {% if project.forks %}
-            {{ project.forks }}
-            <i class="fa-solid fa-code-fork"></i>
-            {% endif %}
+            {% for badge in project.badges %}
+            {{ badge.qualifier }}
+            <i class="{{ badge.icon }}"></i>
+            {% endfor %}
         </div>
     </div>
     <div class="entry-sub">
-        {{ project.subtitle }}
+        {{ project.subtitle }} [{{ project.langs }}]
     </div>
 
     {% if project.bullets %}

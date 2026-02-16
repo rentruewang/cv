@@ -8,41 +8,52 @@ hidden: |
 body:
   positions:
     - title: Data Scientist
-      company: C3.ai
+      company: "[C3.ai](https://c3.ai/)"
       start: July 2024
       end: Current
       tasks:
       - name: Multimodal Parsing
+        langs: Python
         bullets:
-          - Lead the effort (architect, design, implementation) on GenAI team's **multimodal document parsing**, used by over **85%** of customers.
+          - Lead the effort (architect, design, implementation) on GenAI team's multimodal document parsing, used by over 85% of GenAI customers.
           - Supports multiple document types (text, images, tables, audio, video).
-          - Improve qualities with various features of documents (hierarchical extraction, page stitching etc), as well as automatic tuning techniques with **LLM**.
-          - Async pipeline improves speed by **over 10 times**.
+          - >
+            Improve qualities with various features of documents (hierarchical extraction, page stitching etc),
+            as well as automatic tuning techniques with LLM.
+          - Designed an async architecture that improves speed by over 10x.
       - name: Source Code Translation (Fortran to C++)
+        langs: C++, Python
         bullets:
-          - Using **LLM** with **RAG** for base translation, with syntax-aware, language agnostic source code parsing.
+          - Using LLM with RAG for low-level unit translation, augmented with syntax-aware, language agnostic source code parsing.
           - Test on the original tests with C FFI (> 99% accuracy).
-          - Wrote an UI that handles LLM calls and compilation asynchronously.
+          - Wrote an UI that handles LLM calls and compilation in an async manner.
 
     - title: Research Scientist
-      company: MediaTek Research
+      company: "[MediaTek Research](https://www.mediatek.com/mediatekresearch)"
       start: Dec 2021
       end: Jun 2022
       tasks:
       - name: RL Floor Planning
+        langs: Python, C++
         bullets:
-          - Designed and implemented an **RL** **AI** / **EDA** system speeding up initial chip development of the world's biggest chip design by **3 times**.
-          - Proposed and validated **RL** **agent**-based chip design models to justify solution quality.
+          - Designed and implemented an RL AI / EDA system speeding up initial chip development of the world's biggest chip design by 3x.
+          - Proposed and validated RL agent-based chip design models to justify solution quality.
       - name: Multihop Retrieval Model
+        langs: Python
         bullets:
-          - Improved a **RAG** system and reduced error rate by **40%** with multihop document retrieval.
-          - Speed up the **distributed** **LLM** trainer by **30%** via careful profiling and critical-path reduction.
+          - Improved a RAG system and reduced error rate by 40% with multihop document retrieval.
+          - Speed up the distributed LLM trainer by 30% via careful profiling and critical-path reduction.
 
-    - title: Software Designer
-      company: Ponder (Acquired by Snowflake)
+    - title: Software Engineer
+      company: >
+        Ponder
+        (Acquired by [snowflake](https://snowflake.com),
+        maker of [modin](https://github.com/modin-project/modin))
       start: May 2023
       end: Jul 2023
       tasks:
-      - bullets:
-          - Integrated **ML** (**vector retrieval**) pipeline functionality into pandas pipeline.
-          - Interactive debugging capabilities that fixed several high importance, found 1 critical **SQL** bug in the deployment.
+      - name: "MLE / performance improvement"
+        langs: Python
+        bullets:
+          - Integrated ML (vector retrieval) pipeline functionality into pandas pipeline.
+          - Interactive debugging capabilities which found a critical SQL bug in the first week of deployment.

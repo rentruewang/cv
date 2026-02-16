@@ -1,7 +1,28 @@
 sections:
   - contacts
   - positions
-  - educations
   - projects
-  - skills
-keywords: []
+  - educations
+keywords:
+  - llm
+  - rl
+  - agent[s]?
+  - rag
+  - retrieval
+  - \d+[\%x]?
+  - ml
+  - ai
+  - eda
+  - multimodal
+  - python
+  - C\+\+
+  - optimization
+  - genai
+  - nlp
+  - mle
+  - async
+  - cuda
+  - sql
+  - gpu
+  - pytorch
+  - pandas

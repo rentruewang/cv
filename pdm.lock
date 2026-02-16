@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:1b6ab3272a092a9e3f152dae5b691452f9289e4452defb8667b46722b02a4b7d"
+content_hash = "sha256:4a8953b16624068a025e86c2b3bb1a5de82ef6e2f5133565c163fe8265204bcf"
 
 [[metadata.targets]]
 requires_python = "==3.13.*"
@@ -153,22 +153,6 @@ marker = "python_version >= \"3.10\""
 files = [
     {file = "filelock-3.20.3-py3-none-any.whl", hash = "sha256:4b0dda527ee31078689fc205ec4f1c1bf7d56cf88b6dc9426c4f230e46c2dce1"},
     {file = "filelock-3.20.3.tar.gz", hash = "sha256:18c57ee915c7ec61cff0ecf7f0f869936c7c30191bb0cf406f1341778d0834e1"},
-]
-
-[[package]]
-name = "hydra-core"
-version = "1.3.2"
-summary = "A framework for elegantly configuring complex applications"
-groups = ["default"]
-dependencies = [
-    "antlr4-python3-runtime==4.9.*",
-    "importlib-resources; python_version < \"3.9\"",
-    "omegaconf<2.4,>=2.2",
-    "packaging",
-]
-files = [
-    {file = "hydra-core-1.3.2.tar.gz", hash = "sha256:8a878ed67216997c3e9d88a8e72e7b4767e81af37afb4ea3334b269a4390a824"},
-    {file = "hydra_core-1.3.2-py3-none-any.whl", hash = "sha256:fa0238a9e31df3373b35b0bfb672c34cc92718d21f81311d8996a16de1141d8b"},
 ]
 
 [[package]]
@@ -419,7 +403,7 @@ name = "packaging"
 version = "26.0"
 requires_python = ">=3.8"
 summary = "Core utilities for Python packages"
-groups = ["default", "dev"]
+groups = ["dev"]
 files = [
     {file = "packaging-26.0-py3-none-any.whl", hash = "sha256:b36f1fef9334a5588b4166f8bcd26a14e521f2b55e6b9de3aaa80d3ff7a37529"},
     {file = "packaging-26.0.tar.gz", hash = "sha256:00243ae351a257117b6a241061796684b084ed1c516a08c48a3f7e147a9d80b4"},

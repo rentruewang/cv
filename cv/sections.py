@@ -7,28 +7,69 @@ from typing import Any
 
 from . import files
 
-__all__ = ["Section"]
+__all__ = ["Body", "Section", "SectionContent"]
+
+
+@dcls.dataclass(frozen=True)
+class Body:
+    name: str
+    data: dict[str, object]
+    keywords: list[str]
+
+    def render(self) -> str:
+        return self._template.render(**self.data)
+
+    @functools.cached_property
+    def _template(self):
+        return files.get_template(self.name, keywords=self.keywords)
 
 
 @dcls.dataclass(frozen=True)
 class Section:
-    cfg: str
+    keywords: list[str]
+    "Keywords to highlight."
 
-    def render(self):
-        return files.get_template("sections").render(section=self)
+    cfg: str
+    "The configuration file location."
+
+    def render(self) -> str:
+        return self._template.render(section=self.section)
 
     @functools.cached_property
     def cfg_data(self) -> Mapping[str, Any]:
         return files.get_data(self.cfg)
 
     @property
+    def name(self) -> str:
+        return self.cfg_data["name"]
+
+    @property
+    def hidden_msg(self) -> str:
+        return self.cfg_data.get("hidden", "")
+
+    @property
     def title(self) -> str:
         return self.cfg_data.get("title", "")
 
-    @property
-    def name(self):
-        return self.cfg_data["name"]
+    @functools.cached_property
+    def body(self) -> Body:
+        return Body(name=self.name, data=self.cfg_data["body"], keywords=self.keywords)
 
     @functools.cached_property
-    def body(self):
-        return files.get_template(self.name).render(**self.cfg_data["body"])
+    def _template(self):
+        return files.get_template("sections")
+
+    @property
+    def section(self):
+        return SectionContent(
+            name=self.name,
+            title=self.title,
+            body=self.body.render(),
+        )
+
+
+@dcls.dataclass(frozen=True)
+class SectionContent:
+    name: str
+    title: str
+    body: str
