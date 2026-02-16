@@ -35,7 +35,7 @@ body:
 
     - title: Learning Machine
       subtitle: |
-        ML book in question answer format (stack overflow style)
+        ML book in question answer format (StackOverflow style)
       github: https://github.com/rentruewang/learning-machine
       langs: Python
       badges:
