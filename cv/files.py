@@ -69,7 +69,7 @@ class MarkdownRender:
         if isinstance(obj, Iterable):
             return [self._render(val) for val in obj]
 
-        # Do not recurse into custom objects.
+        # Do not recurse into custom objects or ints floats.
         return obj
 
     @functools.cached_property
