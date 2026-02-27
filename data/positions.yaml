@@ -12,7 +12,7 @@ body:
       start: July 2024
       end: Current
       tasks:
-      - name: Multimodal Parsing
+      - name: Multimodal Document Parsing
         langs: Python
         bullets:
           - Lead the effort (architect, design, implementation) on GenAI team's multimodal document parsing, used by over 85% of GenAI customers.
@@ -21,7 +21,7 @@ body:
             Improve qualities with various features of documents (hierarchical extraction, page stitching etc),
             as well as automatic tuning techniques with LLM.
           - Designed an async architecture that improves speed by over 10x.
-      - name: Source Code Translation (Fortran to C++)
+      - name: Programming Language Translation (Fortran to C++)
         langs: C++, Python
         bullets:
           - Using LLM with RAG for low-level unit translation, augmented with syntax-aware, language agnostic source code parsing.
