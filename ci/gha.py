@@ -11,7 +11,7 @@ def remove_unwanted_files() -> None:
 
     print("Removing files we did not ask for...")
 
-    # Remove each directory using shutil.rmtree
+    # Remove these large directories.
     unused = [
         "/usr/local/lib/android",
         "/usr/share/dotnet",
