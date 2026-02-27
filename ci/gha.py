@@ -21,7 +21,7 @@ def remove_unwanted_files() -> None:
     ]
 
     for folder in unused:
-        shutil.rmtree(folder)
+        sh.cmd(f"sudo rm -rf {folder}")
 
     sh.cmd("docker system prune -af --volumes")
 
