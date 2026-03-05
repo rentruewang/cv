@@ -1,9 +1,4 @@
-/* ---------- PAGE SETUP ---------- */
-@page {
-    size: letter;
-    margin: 0.5in;
-}
-
+/* ---------- NORMAL ---------- */
 body {
     font-family: "Times New Roman", Times, serif;
     color: #000;
@@ -17,7 +12,6 @@ body {
     line-height: 1.25;
 }
 
-/* ---------- HEADER ---------- */
 .name {
     font-size: 34px;
     font-weight: bold;
