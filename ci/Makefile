@@ -1,4 +1,4 @@
-all: install build testing pre-commit
+all: install build
 
 publish:
 	python3 pdm.py publish

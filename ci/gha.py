@@ -11,10 +11,17 @@ def remove_unwanted_files() -> None:
 
     print("Removing files we did not ask for...")
 
-    sh.cmd("sudo rm -rf /usr/local/lib/android")
-    sh.cmd("sudo rm -rf /usr/share/dotnet")
-    sh.cmd("sudo rm -rf /opt/ghc")
-    sh.cmd("sudo rm -rf /usr/local/.ghcup")
+    # Remove these large directories.
+    unused = [
+        "/usr/local/lib/android",
+        "/usr/share/dotnet",
+        "/opt/ghc",
+        "/usr/local/.ghcup",
+    ]
+
+    for folder in unused:
+        sh.cmd(f"sudo rm -rf {folder}")
+
     sh.cmd("docker system prune -af --volumes")
 
 

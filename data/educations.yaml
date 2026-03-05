@@ -11,28 +11,8 @@ body:
       school: "[Georgia Institute of Technology](https://cse.gatech.edu/)"
       start: Aug 2022
       end: May 2024
-      courses:
-        - Probability for Sci./Eng.
-        - Knowledge-based AI
-        - Ubiquitous Computing
-        - High Perform Computing
-        - Modeling & Simulation
-        - Data Science for Social
-        - Computational Data Analysis
-        - Data Visual Analysis
 
     - degree: BS EE
       school: "[National Taiwan Universtiy](https://web.ee.ntu.edu.tw/eng/index.php)"
       start: Sep 2017
       end: Jun 2021
-      courses:
-        - Algorithms
-        - Convex Optimization
-        - ML
-        - Linear Algebra
-        - Digital Speech Processing
-        - Data Structures
-        - Signal and Systems
-        - Computer Architecture
-        - Integrated Circuit Design
-        - Cloud Computing And Cyber Security
