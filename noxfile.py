@@ -150,7 +150,7 @@ class _Pdm:
         self._run("pdm", "publish")
 
     def run(self, *args: str):
-        self.sync()
+        self.install()
         self._run("pdm", "run", *args)
 
     def _sync_or_install(self, mode: str) -> None:
