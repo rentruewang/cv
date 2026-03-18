@@ -13,7 +13,7 @@ from nox import Session
 def build(session: Session):
     "Nox `build` command. Calls `python main.py`."
 
-    pdm(session).run(sys.executable, "main.py")
+    pdm(session).run("python", "main.py")
 
 
 @nox.session
@@ -141,17 +141,12 @@ class _Pdm:
     def install(self):
         self._sync_or_install("install")
 
-    def build(self):
+    def _install_and_run(self, *args: str):
         self.install()
-        self._run("pdm", "build")
-
-    def publish(self):
-        self.install()
-        self._run("pdm", "publish")
+        self._run(*args)
 
     def run(self, *args: str):
-        self.install()
-        self._run("pdm", "run", *args)
+        self._install_and_run("pdm", "run", *args)
 
     def _sync_or_install(self, mode: str) -> None:
         # Don't repeatedly reinstall locally.
