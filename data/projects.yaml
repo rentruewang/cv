@@ -22,7 +22,7 @@ body:
     - title: Koila
       subtitle: |
         ML library for fixing CUDA (GPU) issues in single line
-      github: https://github.com/rentruewang/koila
+      github: https://github.com/rentruewang/aioway/tree/koila
       langs: Python
       badges:
         - qualifier: 1800+
