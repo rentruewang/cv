@@ -19,10 +19,10 @@ jobs:
       - name: ⬇️ Set up Python + PDM
         uses: pdm-project/setup-pdm@v4
         with:
-          python-version: "3.13"
+          cache: true
 
       - name: ⚙️ Build
-        run: make -C ci build
+        run: pip install nox[pbs] && nox -rs build
 
       - name: 📦 Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

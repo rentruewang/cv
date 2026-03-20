@@ -20,6 +20,7 @@ dev = [
     "mypy>=1.19.1",
     "pip>=26.0",
     "ipython>=9.10.0",
+    "nox>=2026.2.9",
 ]
 [tool.autoflake]
 in-place = true
