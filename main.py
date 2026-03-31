@@ -1,15 +1,15 @@
 # Copyright (c) RenChu Wang - All Rights Reserved
 
+import argparse
 import contextlib as ctxl
 import dataclasses as dcls
+import pathlib
 import shutil
 import typing
-from argparse import ArgumentParser
-from pathlib import Path
 
-from omegaconf import OmegaConf
+import omegaconf as oc
 
-from cv import Section, files, resumes
+from cv import files, resumes, sections
 
 
 @ctxl.contextmanager
@@ -34,9 +34,9 @@ class GenerationConfig:
 
 
 @typing.no_type_check
-def main(cfg: Path) -> None:
+def main(cfg: pathlib.Path) -> None:
     assert cfg.exists() and cfg.is_file()
-    flags = dict(OmegaConf.load(cfg))
+    flags = dict(oc.OmegaConf.load(cfg))
 
     # Make directory
     files.BUILD.mkdir(exist_ok=True)
@@ -55,10 +55,10 @@ def main(cfg: Path) -> None:
 
 
 def generate_resume(cfg: GenerationConfig, /):
-    sections = [Section(cfg=sec, keywords=cfg.keywords) for sec in cfg.sections]
+    secs = [sections.Section(cfg=sec, keywords=cfg.keywords) for sec in cfg.sections]
 
     with log_stage("Generating resume"):
-        out = resumes.resume(sections=sections)
+        out = resumes.resume(sections=secs)
 
     with (
         log_stage(f"Write file to index.html in build: {files.BUILD}"),
@@ -68,11 +68,11 @@ def generate_resume(cfg: GenerationConfig, /):
 
 
 if __name__ == "__main__":
-    CWD = Path(__file__).parent
-    parser = ArgumentParser()
+    CWD = pathlib.Path(__file__).parent
+    parser = argparse.ArgumentParser()
     _ = parser.add_argument(
         "--cfg",
-        type=Path,
+        type=pathlib.Path,
         default=CWD / "config.yaml",
     )
     flags = vars(parser.parse_args())

@@ -2,8 +2,8 @@
 
 import dataclasses as dcls
 import functools
-from collections.abc import Mapping
-from typing import Any
+import typing
+from collections import abc as cabc
 
 from . import files
 
@@ -36,7 +36,7 @@ class Section:
         return self._template.render(section=self.section)
 
     @functools.cached_property
-    def cfg_data(self) -> Mapping[str, Any]:
+    def cfg_data(self) -> cabc.Mapping[str, typing.Any]:
         return files.get_data(self.cfg)
 
     @property

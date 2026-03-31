@@ -2,15 +2,15 @@
 
 import dataclasses as dcls
 import functools
+import pathlib
 import re
 import typing
-from collections.abc import Iterable, Mapping, Sequence
-from pathlib import Path
-from typing import Any
+from collections import abc as cabc
 
-from jinja2 import Environment, FileSystemLoader, Template, meta
-from markdown_it import MarkdownIt
-from omegaconf import OmegaConf
+import jinja2 as j2
+import markdown_it
+import omegaconf as oc
+from jinja2 import meta
 
 __all__ = [
     "ROOT",
@@ -20,7 +20,7 @@ __all__ = [
     "MarkdownRender",
 ]
 
-ROOT = Path(__file__).parent.parent.absolute()
+ROOT = pathlib.Path(__file__).parent.parent.absolute()
 "Project root."
 
 TEMPLATE = ROOT / "templates"
@@ -40,12 +40,12 @@ class _IsRendered(str):
 @dcls.dataclass
 class MarkdownRender:
 
-    template: Template
+    template: j2.Template
     """
     The jinja template to fill.
     """
 
-    keywords: Sequence[str] = ()
+    keywords: cabc.Sequence[str] = ()
     """
     The keywords to be marked in bold.
     """
@@ -55,7 +55,7 @@ class MarkdownRender:
         return self.template.render(**kwargs)
 
     @typing.no_type_check
-    def _render(self, obj: Any) -> Any:
+    def _render(self, obj: typing.Any) -> typing.Any:
         match obj:
             # Skip any rendering if it's already previously rendered.
             case _IsRendered():
@@ -66,10 +66,10 @@ class MarkdownRender:
                 obj = self._md.renderInline(obj)
                 return _IsRendered(obj)
 
-            case Mapping():
+            case cabc.Mapping():
                 return {key: self._render(val) for key, val in obj.items()}
 
-            case Iterable():
+            case cabc.Iterable():
                 return [self._render(val) for val in obj]
 
             # Do not recurse into custom objects or primitives.
@@ -78,7 +78,7 @@ class MarkdownRender:
 
     @functools.cached_property
     def _md(self):
-        return MarkdownIt()
+        return markdown_it.MarkdownIt()
 
     def _maybe_mark_keywords_bold(self, text: str) -> str:
         "Mark the keywords bold. Skip link."
@@ -106,7 +106,7 @@ def _isolated_keyword(kw: str):
     return re.compile(kw, flags=re.IGNORECASE)
 
 
-def _highlight_keywords(text: str, keywords: Sequence[str]) -> str:
+def _highlight_keywords(text: str, keywords: cabc.Sequence[str]) -> str:
     for kw in keywords:
         pattern = _isolated_keyword(kw)
         text = pattern.sub(r"**\1**", text)
@@ -114,10 +114,10 @@ def _highlight_keywords(text: str, keywords: Sequence[str]) -> str:
 
 
 def env():
-    return Environment(loader=FileSystemLoader(TEMPLATE))
+    return j2.Environment(loader=j2.FileSystemLoader(TEMPLATE))
 
 
-def get_template(name: str, /, keywords: Sequence[str] = ()):
+def get_template(name: str, /, keywords: cabc.Sequence[str] = ()):
     "Get the jinja template."
 
     j2 = f"{name}.html.j2"
@@ -138,13 +138,13 @@ def find_template_vars(name: str) -> set[str]:
     return meta.find_undeclared_variables(parsed)
 
 
-def get_data(name: str) -> Mapping[str, Any]:
+def get_data(name: str) -> cabc.Mapping[str, typing.Any]:
     "Get the json config data."
 
     file = DATA / f"{name}.yaml"
 
     with open(file) as f:
-        result = OmegaConf.load(f)
+        result = oc.OmegaConf.load(f)
 
-    assert isinstance(result, Mapping)
+    assert isinstance(result, cabc.Mapping)
     return result

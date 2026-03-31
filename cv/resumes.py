@@ -1,11 +1,10 @@
 # Copyright (c) RenChu Wang - All Rights Reserved
 
+import datetime
 import subprocess as sp
-from collections.abc import Iterable
-from datetime import date as Date
+from collections import abc as cabc
 
-from . import files
-from .sections import Section
+from . import files, sections
 
 __all__ = ["resume"]
 
@@ -13,8 +12,8 @@ NAME = "Ren-Chu Wang"
 "My name in the resume."
 
 
-def resume(sections: Iterable[Section]) -> str:
-    today = Date.today().strftime("%b %d, %Y")
+def resume(sections: cabc.Iterable[sections.Section]) -> str:
+    today = datetime.date.today().strftime("%b %d, %Y")
     sha = git_sha()
     return files.get_template("resume").render(
         name=NAME,
