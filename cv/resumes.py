@@ -4,7 +4,8 @@ import datetime
 import subprocess as sp
 from collections import abc as cabc
 
-from . import files, sections
+from .files import get_template
+from .sections import Section
 
 __all__ = ["resume"]
 
@@ -12,10 +13,10 @@ NAME = "Ren-Chu Wang"
 "My name in the resume."
 
 
-def resume(sections: cabc.Iterable[sections.Section]) -> str:
+def resume(sections: cabc.Iterable[Section]) -> str:
     today = datetime.date.today().strftime("%b %d, %Y")
     sha = git_sha()
-    return files.get_template("resume").render(
+    return get_template("resume").render(
         name=NAME,
         today=today,
         build=sha,

@@ -9,7 +9,9 @@ import typing
 
 import omegaconf as oc
 
-from cv import files, resumes, sections
+from cv.files import BUILD, TEMPLATE
+from cv.resumes import resume
+from cv.sections import Section
 
 
 @ctxl.contextmanager
@@ -39,13 +41,13 @@ def main(cfg: pathlib.Path) -> None:
     flags = dict(oc.OmegaConf.load(cfg))
 
     # Make directory
-    files.BUILD.mkdir(exist_ok=True)
-    if not (gitignore := files.BUILD / ".gitignore").exists():
+    BUILD.mkdir(exist_ok=True)
+    if not (gitignore := BUILD / ".gitignore").exists():
         gitignore.write_text("*")
 
     # Copy CSS.
-    with log_stage(f"Copy CSS to template: {files.TEMPLATE}"):
-        _ = shutil.copy2(files.TEMPLATE / "resume.css", files.BUILD)
+    with log_stage(f"Copy CSS to template: {TEMPLATE}"):
+        _ = shutil.copy2(TEMPLATE / "resume.css", BUILD)
 
     cfg = GenerationConfig(
         sections=flags["sections"],
@@ -55,14 +57,14 @@ def main(cfg: pathlib.Path) -> None:
 
 
 def generate_resume(cfg: GenerationConfig, /):
-    secs = [sections.Section(cfg=sec, keywords=cfg.keywords) for sec in cfg.sections]
+    secs = [Section(cfg=sec, keywords=cfg.keywords) for sec in cfg.sections]
 
     with log_stage("Generating resume"):
-        out = resumes.resume(sections=secs)
+        out = resume(sections=secs)
 
     with (
-        log_stage(f"Write file to index.html in build: {files.BUILD}"),
-        (files.BUILD / "index.html").open("w+") as f,
+        log_stage(f"Write file to index.html in build: {BUILD}"),
+        (BUILD / "index.html").open("w+") as f,
     ):
         _ = f.write(out)
 
