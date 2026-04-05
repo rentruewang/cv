@@ -5,7 +5,7 @@ import functools
 import typing
 from collections import abc as cabc
 
-from . import files
+from .files import get_data, get_template
 
 __all__ = ["Body", "Section", "SectionContent"]
 
@@ -21,7 +21,7 @@ class Body:
 
     @functools.cached_property
     def _template(self):
-        return files.get_template(self.name, keywords=self.keywords)
+        return get_template(self.name, keywords=self.keywords)
 
 
 @dcls.dataclass(frozen=True)
@@ -37,7 +37,7 @@ class Section:
 
     @functools.cached_property
     def cfg_data(self) -> cabc.Mapping[str, typing.Any]:
-        return files.get_data(self.cfg)
+        return get_data(self.cfg)
 
     @property
     def name(self) -> str:
@@ -57,7 +57,7 @@ class Section:
 
     @functools.cached_property
     def _template(self):
-        return files.get_template("sections")
+        return get_template("sections")
 
     @property
     def section(self):
