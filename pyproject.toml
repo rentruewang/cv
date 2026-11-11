@@ -1,7 +1,7 @@
 [project]
 name = "cv"
 version = "0.0.0"
-description = "Default template for PDM package"
+description = "My CV built automatically from data"
 authors = [
     {name = "RenChu Wang", email = "patrick1031wang@gmail.com"},
 ]
