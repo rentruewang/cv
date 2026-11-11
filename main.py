@@ -35,7 +35,6 @@ class GenerationConfig:
         return generate_resume(self)
 
 
-@typing.no_type_check
 def main(cfg: pathlib.Path) -> None:
     assert cfg.exists() and cfg.is_file()
     flags = dict(oc.OmegaConf.load(cfg))
@@ -49,11 +48,11 @@ def main(cfg: pathlib.Path) -> None:
     with log_stage(f"Copy CSS to template: {TEMPLATE}"):
         _ = shutil.copy2(TEMPLATE / "resume.css", BUILD)
 
-    cfg = GenerationConfig(
+    gen = GenerationConfig(
         sections=flags["sections"],
         keywords=flags["keywords"],
     )
-    cfg.generate()
+    gen.generate()
 
 
 def generate_resume(cfg: GenerationConfig, /):
