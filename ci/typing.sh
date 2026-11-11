@@ -3,4 +3,4 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-pdm run mypy .
+pdm run pyrefly check .
