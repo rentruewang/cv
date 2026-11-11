@@ -21,8 +21,14 @@ jobs:
         with:
           cache: true
 
+      - name: 🧹 Free disk space
+        run: make free-disk-space
+
+      - name: 📥 Install dependencies
+        run: make install
+
       - name: ⚙️ Build
-        run: pip install nox[pbs] && nox -rs build
+        run: make build
 
       - name: 📦 Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

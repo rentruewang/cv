@@ -14,7 +14,7 @@ jobs:
           cache: true
 
       - name: 🏃 Formatting
-        run: pip install nox[pbs] && nox -rs formatting
+        run: make free-disk-space install formatting
 
   type:
     name: 👨‍⚕️ Type Checking
@@ -29,4 +29,4 @@ jobs:
           cache: true
 
       - name: 🏃 Type checking
-        run: pip install nox[pbs] && nox -rs typing
+        run: make free-disk-space install typing
