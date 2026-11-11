@@ -9,8 +9,8 @@ body:
   positions:
     - title: Data Scientist
       company: "[C3.ai](https://c3.ai/)"
-      start: July 2024
-      end: April 2026
+      start: Jul 2024
+      end: Apr 2026
       tasks:
       - name: Multimodal Document Parsing
         langs: Python
