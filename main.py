@@ -5,9 +5,8 @@ import contextlib as ctxl
 import dataclasses as dcls
 import pathlib
 import shutil
-import typing
 
-import omegaconf as oc
+import yaml
 
 from cv.files import BUILD, TEMPLATE
 from cv.resumes import resume
@@ -35,10 +34,10 @@ class GenerationConfig:
         return generate_resume(self)
 
 
-@typing.no_type_check
 def main(cfg: pathlib.Path) -> None:
     assert cfg.exists() and cfg.is_file()
-    flags = dict(oc.OmegaConf.load(cfg))
+    with cfg.open() as f:
+        flags = yaml.safe_load(f)
 
     # Make directory
     BUILD.mkdir(exist_ok=True)
@@ -49,11 +48,11 @@ def main(cfg: pathlib.Path) -> None:
     with log_stage(f"Copy CSS to template: {TEMPLATE}"):
         _ = shutil.copy2(TEMPLATE / "resume.css", BUILD)
 
-    cfg = GenerationConfig(
+    gen = GenerationConfig(
         sections=flags["sections"],
         keywords=flags["keywords"],
     )
-    cfg.generate()
+    gen.generate()
 
 
 def generate_resume(cfg: GenerationConfig, /):

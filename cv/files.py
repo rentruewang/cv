@@ -9,7 +9,7 @@ from collections import abc as cabc
 
 import jinja2 as j2
 import markdown_it
-import omegaconf as oc
+import yaml
 from jinja2 import meta
 
 __all__ = [
@@ -144,7 +144,7 @@ def get_data(name: str) -> cabc.Mapping[str, typing.Any]:
     file = DATA / f"{name}.yaml"
 
     with open(file) as f:
-        result = oc.OmegaConf.load(f)
+        result = yaml.safe_load(f)
 
     assert isinstance(result, cabc.Mapping)
     return result
