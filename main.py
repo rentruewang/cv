@@ -5,9 +5,8 @@ import contextlib as ctxl
 import dataclasses as dcls
 import pathlib
 import shutil
-import typing
 
-import omegaconf as oc
+import yaml
 
 from cv.files import BUILD, TEMPLATE
 from cv.resumes import resume
@@ -37,7 +36,8 @@ class GenerationConfig:
 
 def main(cfg: pathlib.Path) -> None:
     assert cfg.exists() and cfg.is_file()
-    flags = dict(oc.OmegaConf.load(cfg))
+    with cfg.open() as f:
+        flags = yaml.safe_load(f)
 
     # Make directory
     BUILD.mkdir(exist_ok=True)

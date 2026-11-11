@@ -5,7 +5,7 @@ description = "Default template for PDM package"
 authors = [
     {name = "RenChu Wang", email = "patrick1031wang@gmail.com"},
 ]
-dependencies = ["omegaconf>=2.3.0", "jinja2>=3.1.6", "rich>=14.3.2", "markdown-it-py>=4.0.0"]
+dependencies = ["jinja2>=3.1.6", "rich>=14.3.2", "markdown-it-py>=4.0.0", "pyyaml>=6.0.3"]
 requires-python = "==3.13.*"
 readme = "README.md"
 license = {text = "MIT"}
@@ -21,6 +21,7 @@ dev = [
     "pip>=26.0",
     "ipython>=9.10.0",
     "nox>=2026.2.9",
+    "types-pyyaml>=6.0.12.20261111",
 ]
 [tool.autoflake]
 in-place = true
