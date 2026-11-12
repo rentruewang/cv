@@ -8,9 +8,9 @@ import typing
 from collections import abc as cabc
 
 import jinja2 as j2
-import markdown_it
 import yaml
 from jinja2 import meta
+lazy import markdown_it
 
 __all__ = [
     "ROOT",
@@ -54,7 +54,6 @@ class MarkdownRender:
         kwargs = self._render(kwargs)
         return self.template.render(**kwargs)
 
-    @typing.no_type_check
     def _render(self, obj: typing.Any) -> typing.Any:
         match obj:
             # Skip any rendering if it's already previously rendered.
